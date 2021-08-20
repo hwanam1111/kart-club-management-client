@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+package-lock.json
+
+# production
+/build
+
+# mise
+.DS_Store
+.env
+
+# log
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# npm cache
+.npm
+
+# optional REPL history
+.node_repl_history
+.next
