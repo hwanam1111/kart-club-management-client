@@ -13,16 +13,8 @@ const nextConfig = withBundleAnalyzer({
   },
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
-    const originalEntry = config.entry;
     return {
       ...config,
-      entry: async () => {
-        const entries = await originalEntry();
-        if (entries['main.js'] && !entries['main.js'].includes('./polyfills.js')) {
-          entries['main.js'].unshift('./polyfills.js');
-        }
-        return entries;
-      },
       mode: prod ? 'production' : 'development',
       devtool: prod ? 'hidden-source-map' : 'eval',
       plugins: [

@@ -3,8 +3,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
 import wrapper from '../store/configureStore';
-
-// import GlobalStyles from '../components/GlobalStyles';
+import GlobalStyles from '../GlobalStyles';
 
 function App({ Component }: AppProps) {
   return (
@@ -26,7 +25,7 @@ function App({ Component }: AppProps) {
         <meta property="og:image:secure_url" content="" />
         <title>카트라이더 클럽 매니저</title>
       </Head>
-      {/* <GlobalStyles /> */}
+      <GlobalStyles />
       <Component />
     </>
   );
