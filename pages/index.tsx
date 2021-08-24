@@ -1,10 +1,13 @@
 import React from 'react';
 
+import GetMyInformation from '../containers/base/GetMyInformation';
+import Header from '../components/base/Header';
+
 function MainPage() {
   return (
-    <div>
-      메인페이지
-    </div>
+    <GetMyInformation>
+      <Header />
+    </GetMyInformation>
   );
 }
 

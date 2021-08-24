@@ -23,7 +23,7 @@ function App({ Component }: AppProps) {
         <meta property="og:description" content="카트라이더 클럽 관리 프로그램" />
         <meta property="og:image" content="" />
         <meta property="og:image:secure_url" content="" />
-        <title>카트라이더 클럽 매니저</title>
+        <title>.</title>
       </Head>
       <GlobalStyles />
       <Component />
