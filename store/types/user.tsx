@@ -1,19 +1,25 @@
 import { ActionType } from 'typesafe-actions';
 
-import { AsyncState } from '../../lib/reducerUtils';
 import * as userActions from '../actions/user';
 
 export type UserAction = ActionType<typeof userActions>;
 
-interface MyInformationTypes {
-  id: number,
-  email: string,
-  nickname: string,
-  rating: string,
-  profileImageUri: string
-  clubId?: number
+export interface DefaultAsyncTypes {
+  loading: boolean,
+  error: any | null
 }
 
-export type UserStateType = {
-  myInformation: AsyncState<MyInformationTypes, Error>;
-};
+export interface MyInformationTypes extends DefaultAsyncTypes {
+  data: {
+    id: number,
+    email: string,
+    nickname: string,
+    rating: string,
+    profileImageUri: string,
+    clubId?: number
+  } | null
+}
+
+export interface InitialStateUserDto {
+  myInformation: MyInformationTypes,
+}

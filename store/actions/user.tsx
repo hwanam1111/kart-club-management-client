@@ -10,4 +10,4 @@ export const getMyInformationAsync = createAsyncAction(
   GET_MY_INFORMATION,
   GET_MY_INFORMATION_SUCCESS,
   GET_MY_INFORMATION_ERROR,
-)<string, MyInformationTypes, AxiosError>();
+)<undefined, MyInformationTypes, AxiosError>();

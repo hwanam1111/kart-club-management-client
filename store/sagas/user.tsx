@@ -1,9 +1,9 @@
 import { all, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+import createAsyncSaga from '../../lib/createAsyncSaga';
 import { MyInformationTypes } from '../types/user';
 import { getMyInformationAsync, GET_MY_INFORMATION } from '../actions/user';
-import createAsyncSaga from '../../lib/createAsyncSaga';
 
 async function fetchMyInformationAPI() {
   const response = await axios.post<MyInformationTypes>('/users/my');
