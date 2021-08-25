@@ -13,7 +13,7 @@ function GetMyInformation({ children }: GetMyInformationProps) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMyInformationAsync.request(''));
+    dispatch(getMyInformationAsync.request());
   }, []);
 
   return (

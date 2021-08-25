@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@next/bundle-analyzer": "^10.1.2",
+    "@types/next": "^9.0.0",
     "@types/next-redux-saga": "^3.0.2",
     "@types/next-redux-wrapper": "^3.0.0",
     "@types/react-dom": "^17.0.9",
@@ -21,6 +22,7 @@
     "@types/redux-saga": "^0.10.5",
     "@types/styled-components": "^5.1.12",
     "@webcomponents/shadydom": "^1.8.0",
+    "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.12.0",
     "cross-env": "^7.0.3",
@@ -41,7 +43,7 @@
     "sass": "^1.32.8",
     "styled-components": "^5.2.3",
     "styled-reset": "^4.3.4",
-    "typesafe-actions": "^5.1.0",
+    "typesafe-actions": "^4.4.2",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
