@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { RootState } from '../../store/reducers';
+import HeaderUserMenu from './HeaderUserMenu';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -19,7 +20,11 @@ const HeaderWrapper = styled.header`
   right: 0;
 `;
 
-const ProfileImage = styled.img`
+const UserToggleBtn = styled.button`
+  
+`;
+
+const UserImage = styled.img`
   border-radius: .475rem;
   width: 35px;
   height: 35px;
@@ -28,11 +33,30 @@ const ProfileImage = styled.img`
 `;
 
 function Header() {
-  const { data, loading, error } = useSelector((state: RootState) => state.user.myInformation);
+  const { data } = useSelector((state: RootState) => state.user.myInformation);
+  const [toggleMenuOpend, setToggleMenuOpend] = useState<boolean>(false);
+
+  const onClickUserMenuBtn = useCallback((): void => {
+    setToggleMenuOpend(true);
+  }, []);
+
+  const onCloseUserMenu = useCallback((): void => {
+    setToggleMenuOpend(false);
+  }, []);
 
   return (
     <HeaderWrapper>
-      <ProfileImage src="/static/user.png" alt="프로필 이미지" />
+      <UserToggleBtn type="button" onClick={onClickUserMenuBtn}>
+        <UserImage
+          src={data?.profileImageUri || '/static/user.png'}
+          alt="프로필 이미지"
+        />
+      </UserToggleBtn>
+      {toggleMenuOpend && (
+        <HeaderUserMenu
+          onClose={onCloseUserMenu}
+        />
+      )}
     </HeaderWrapper>
   );
 }

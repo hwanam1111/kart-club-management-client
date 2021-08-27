@@ -1,12 +1,12 @@
 import React from 'react';
 
 import GetMyInformation from '../containers/base/GetMyInformation';
-import Header from '../components/base/Header';
+import HeaderContainer from '../containers/base/HeaderContainer';
 
 function MainPage() {
   return (
     <GetMyInformation>
-      <Header />
+      <HeaderContainer />
     </GetMyInformation>
   );
 }
