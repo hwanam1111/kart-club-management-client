@@ -18,16 +18,9 @@ const userReducer = createReducer<InitialStateUserDto, UserAction>(initialState)
     draft.myInformation.data = null;
     draft.myInformation.error = null;
   }))
-  .handleAction(getMyInformationAsync.success, (state) => produce(state, (draft) => {
+  .handleAction(getMyInformationAsync.success, (state, action) => produce(state, (draft) => {
     draft.myInformation.loading = false;
-    draft.myInformation.data = {
-      id: 1,
-      email: 'email',
-      nickname: 'nickname',
-      rating: 'rating',
-      profileImageUri: 'profile image',
-      clubId: 1,
-    };
+    draft.myInformation.data = action.payload.data;
     draft.myInformation.error = null;
   }))
   .handleAction(getMyInformationAsync.failure, (state, action) => produce(state, (draft) => {

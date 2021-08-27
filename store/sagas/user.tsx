@@ -6,7 +6,7 @@ import { MyInformationTypes } from '../types/user';
 import { getMyInformationAsync, GET_MY_INFORMATION } from '../actions/user';
 
 async function fetchMyInformationAPI() {
-  const response = await axios.post<MyInformationTypes>('/users/my');
+  const response = await axios.get<MyInformationTypes>('/v1/user/my');
   return response.data;
 }
 const fetchMyInformation = createAsyncSaga(getMyInformationAsync, fetchMyInformationAPI);

@@ -1,5 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+
+import { RootState } from '../../store/reducers';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -25,6 +28,8 @@ const ProfileImage = styled.img`
 `;
 
 function Header() {
+  const { data, loading, error } = useSelector((state: RootState) => state.user.myInformation);
+
   return (
     <HeaderWrapper>
       <ProfileImage src="/static/user.png" alt="프로필 이미지" />

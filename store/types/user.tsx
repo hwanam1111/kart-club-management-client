@@ -17,7 +17,7 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
     rating: string,
     profileImageUri: string,
     clubId?: number
-  } | null
+  } | null | string
 }
 
 export interface InitialStateUserDto {
