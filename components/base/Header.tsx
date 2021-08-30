@@ -29,7 +29,6 @@ const UserImage = styled.img`
   width: 35px;
   height: 35px;
   background-color: #efefef;
-  padding: 5px;
 `;
 
 function Header() {
