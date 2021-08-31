@@ -45,7 +45,7 @@ const UserImage = styled.img`
 function Header() {
   const { data } = useSelector((state: RootState) => state.user.myInformation);
   const [userMenuOpend, setUserMenuOpend] = useToggleMenu(false);
-  const [openSlide, notificationOpend, setNotificationOpend, setNotificationClosed] = useSlideToggleMenu('right', 0.3);
+  const [openSlide, notificationOpend, setNotificationOpend, setNotificationClosed] = useSlideToggleMenu('right', 0.3, false);
 
   return (
     <HeaderWrapper>

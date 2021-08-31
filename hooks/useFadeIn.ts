@@ -7,7 +7,7 @@ interface useFadeInHooks {
   }
 }
 
-const useFadeIn = (duration = 0, delay = 0): useFadeInHooks => {
+const useFadeIn = (duration: number, delay: number): useFadeInHooks => {
   const element = useRef<HTMLElement>(null);
   useEffect(() => {
     element.current.style.transition = `opacity ${duration}s ${delay}s`;

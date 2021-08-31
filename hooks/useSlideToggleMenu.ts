@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-const useSlideToggleMenu = (direction = 'left', duration = 0, opend = null) => {
+const useSlideToggleMenu = (direction: string, duration: number, opend: boolean) => {
   const element = useRef<HTMLElement>(null);
   const [menuOpend, setMenuOpend] = useState(opend);
 
