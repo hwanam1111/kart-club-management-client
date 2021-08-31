@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { RootState } from '../../store/reducers';
 import useToggleMenu from '../../hooks/useToggleMenu';
 import HeaderUserMenu from './HeaderUserMenu';
+import HeaderNotification from './HeaderNotification';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -42,15 +43,20 @@ const UserImage = styled.img`
 
 function Header() {
   const { data } = useSelector((state: RootState) => state.user.myInformation);
-  const [userMenuOpend, onClickUserMenuOpend] = useToggleMenu(false);
-  const [notificationOpend, onClickNotificationOpend] = useToggleMenu(false);
+  const [userMenuOpend, setUserMenuOpend] = useToggleMenu(false);
+  const [notificationOpend, setNotificationOpend] = useToggleMenu(false);
 
   return (
     <HeaderWrapper>
-      <NotificationToggleBtn type="button" onClick={onClickNotificationOpend}>
+      <NotificationToggleBtn type="button" onClick={setNotificationOpend}>
         <BiMessageSquareDetail />
       </NotificationToggleBtn>
-      <UserToggleBtn type="button" onClick={onClickUserMenuOpend}>
+      {notificationOpend && (
+        <HeaderNotification
+          onClose={setNotificationOpend}
+        />
+      )}
+      <UserToggleBtn type="button" onClick={setUserMenuOpend}>
         <UserImage
           src={data?.profileImageUri || '/static/user.png'}
           alt="프로필 이미지"
@@ -58,7 +64,7 @@ function Header() {
       </UserToggleBtn>
       {userMenuOpend && (
         <HeaderUserMenu
-          onClose={onClickUserMenuOpend}
+          onClose={setUserMenuOpend}
         />
       )}
     </HeaderWrapper>
