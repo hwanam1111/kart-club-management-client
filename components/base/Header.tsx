@@ -7,6 +7,7 @@ import { RootState } from '../../store/reducers';
 import useToggleMenu from '../../hooks/useToggleMenu';
 import HeaderUserMenu from './HeaderUserMenu';
 import HeaderNotification from './HeaderNotification';
+import useSlideToggleMenu from '../../hooks/useSlideToggleMenu';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -44,7 +45,7 @@ const UserImage = styled.img`
 function Header() {
   const { data } = useSelector((state: RootState) => state.user.myInformation);
   const [userMenuOpend, setUserMenuOpend] = useToggleMenu(false);
-  const [notificationOpend, setNotificationOpend] = useToggleMenu(false);
+  const [openSlide, notificationOpend, setNotificationOpend, setNotificationClosed] = useSlideToggleMenu('right', 0.3);
 
   return (
     <HeaderWrapper>
@@ -53,7 +54,8 @@ function Header() {
       </NotificationToggleBtn>
       {notificationOpend && (
         <HeaderNotification
-          onClose={setNotificationOpend}
+          onClose={setNotificationClosed}
+          slideAnimation={openSlide}
         />
       )}
       <UserToggleBtn type="button" onClick={setUserMenuOpend}>
