@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import HeaderUserMenuProfile from './HeaderUserMenuProfile';
 import HeaderUserMenuItems from './HeaderUserMenuItems';
+import useFadeIn from '../../hooks/useFadeIn';
 
 const HeaderUserMenuWrapper = styled.div`
   position: fixed;
@@ -19,9 +20,11 @@ interface HeaderUserMenuProps {
 }
 
 function HeaderUserMenu({ onClose }: HeaderUserMenuProps) {
+  const fadeIn = useFadeIn(0.2, 0);
+
   return (
     <OutsideClickHandler onOutsideClick={onClose}>
-      <HeaderUserMenuWrapper>
+      <HeaderUserMenuWrapper {...fadeIn}>
         <HeaderUserMenuProfile />
         <HeaderUserMenuItems />
       </HeaderUserMenuWrapper>
