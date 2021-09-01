@@ -5,7 +5,8 @@ const GlobalStyles = createGlobalStyle`
   ${reset};
 
   :root {
-    --main-color: #00cca5;
+    --main-color: #50cd89;
+    --main-color-light-bg: #e8fff3;
     --main-color-bold: #0dae90;
     --input-color: #333;
     --placeholder: #a1a1a1;

@@ -1,10 +1,14 @@
 import React from 'react';
 
-import HeaderContainer from '../components/base/Header';
+import Header from '../components/base/Header';
+import Navigation from '../components/base/Navigation';
 
 function MainPage() {
   return (
-    <HeaderContainer />
+    <>
+      <Header />
+      <Navigation />
+    </>
   );
 }
 
