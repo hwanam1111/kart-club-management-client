@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { RootState } from '../../store/reducers';
 import useGetMyInformation from '../../hooks/useGetMyInformation';
 
 const HeaderUserMenuItemsWrapper = styled.ul`
