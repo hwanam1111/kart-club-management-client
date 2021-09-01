@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { RootState } from '../../store/reducers';
+import useGetMyInformation from '../../hooks/useGetMyInformation';
 
 const HeaderUserMenuItemsWrapper = styled.ul`
   padding: 15px 25px;
@@ -13,11 +13,11 @@ const MenuItem = styled.li`
 `;
 
 function HeaderUserMenuItems() {
-  const { data } = useSelector((state: RootState) => state.user.myInformation);
+  const { myInformation } = useGetMyInformation();
 
   return (
     <HeaderUserMenuItemsWrapper>
-      {data && data !== 'no-user-info' ? (
+      {myInformation && myInformation !== 'no-user-info' ? (
         <>
           <MenuItem>내 프로필</MenuItem>
           <MenuItem>내 클럽</MenuItem>

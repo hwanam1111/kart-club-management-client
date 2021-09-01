@@ -1,13 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import styled from 'styled-components';
 
-import { RootState } from '../../store/reducers';
+import useGetMyInformation from '../../hooks/useGetMyInformation';
 import useToggleMenu from '../../hooks/useToggleMenu';
+import useSlideToggleMenu from '../../hooks/useSlideToggleMenu';
 import HeaderUserMenu from './HeaderUserMenu';
 import HeaderNotification from './HeaderNotification';
-import useSlideToggleMenu from '../../hooks/useSlideToggleMenu';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -43,7 +42,7 @@ const UserImage = styled.img`
 `;
 
 function Header() {
-  const { data } = useSelector((state: RootState) => state.user.myInformation);
+  const { myInformation } = useGetMyInformation();
   const [userMenuOpend, setUserMenuOpend] = useToggleMenu(false);
   const [openSlide, notificationOpend, setNotificationOpend, setNotificationClosed] = useSlideToggleMenu('right', 0.3, false);
 
@@ -60,7 +59,7 @@ function Header() {
       )}
       <UserToggleBtn type="button" onClick={setUserMenuOpend}>
         <UserImage
-          src={data?.profileImageUri || '/static/user.png'}
+          src={myInformation?.profileImageUri || '/static/user.png'}
           alt="프로필 이미지"
         />
       </UserToggleBtn>

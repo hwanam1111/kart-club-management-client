@@ -1,13 +1,10 @@
 import React from 'react';
 
-import GetMyInformation from '../containers/base/GetMyInformation';
-import HeaderContainer from '../containers/base/HeaderContainer';
+import HeaderContainer from '../components/base/Header';
 
 function MainPage() {
   return (
-    <GetMyInformation>
-      <HeaderContainer />
-    </GetMyInformation>
+    <HeaderContainer />
   );
 }
 
