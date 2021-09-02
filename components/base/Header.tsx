@@ -16,7 +16,6 @@ const HeaderWrapper = styled.header`
   z-index: 2;
   height: 65px;
   padding: 0 70px;
-  border-bottom: 1px solid #eee;
   width: calc(100% - 280px);
   position: fixed;
   top: 0;

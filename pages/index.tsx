@@ -1,14 +1,12 @@
 import React from 'react';
 
-import Header from '../components/base/Header';
-import Navigation from '../components/base/Navigation';
+import PageTemplete from '../components/base/PageTemplate';
 
 function MainPage() {
   return (
-    <>
-      <Header />
-      <Navigation />
-    </>
+    <PageTemplete>
+      .
+    </PageTemplete>
   );
 }
 

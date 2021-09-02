@@ -10,7 +10,6 @@ const NavWrapper = styled.nav`
   top: 0;
   bottom: 0;
   width: 280px;
-  border-right: 1px solid #eee;
   background-color: #fff;
   padding: 0 30px;
 `;
