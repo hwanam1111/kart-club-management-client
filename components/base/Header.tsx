@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import useGetMyInformation from '../../hooks/useGetMyInformation';
 import useToggleMenu from '../../hooks/useToggleMenu';
-import useSlideToggleMenu from '../../hooks/useSlideToggleMenu';
+import useSlideToggleMenu from '../../hooks/useFixedSlideToggleMenu';
 import HeaderUserMenu from './HeaderUserMenu';
 import HeaderNotification from './HeaderNotification';
 

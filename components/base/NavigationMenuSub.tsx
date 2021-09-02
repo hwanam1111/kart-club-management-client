@@ -4,13 +4,16 @@ import { BsDot } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const NavigationMenuSubWrapper = styled.ul`
-
+  overflow-y: hidden;
 `;
 
 const SubMenuItem = styled.li`
-  /* color: var(--main-color);
-  background-color: var(--main-color-light-bg); */
   color: #7e8299;
+  transition: color .15s ease;
+
+  &:hover {
+    color: var(--main-color);
+  }
 `;
 
 const SubMenuLink = styled.a`
@@ -19,6 +22,7 @@ const SubMenuLink = styled.a`
   display: flex;
   align-items: center;
   padding: 11px 15px;
+  cursor: pointer;
 `;
 
 const DotIcon = styled.span`
@@ -32,12 +36,18 @@ const MenuName = styled.span`
 `;
 
 interface NavigationMenuSubProps {
-  subMenu: Array<{menuName: string, menuLink: string}>
+  subMenu: Array<{ menuName: string, menuLink: string }>,
+  slideAnimation: {
+    ref: any,
+    style: {
+      maxHeight: string
+    }
+  },
 }
 
-function NavigationMenuSub({ subMenu }: NavigationMenuSubProps) {
+function NavigationMenuSub({ subMenu, slideAnimation }: NavigationMenuSubProps) {
   return (
-    <NavigationMenuSubWrapper>
+    <NavigationMenuSubWrapper {...slideAnimation}>
       {subMenu.map((menu) => (
         <SubMenuItem key={menu.menuName}>
           <Link href={menu.menuLink}>

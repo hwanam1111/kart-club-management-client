@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { BiChevronDown, BiChevronRight } from 'react-icons/bi';
+import React, { useRef } from 'react';
+import { BiChevronDown } from 'react-icons/bi';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 import NavigationMenuSub from './NavigationMenuSub';
+import useNavigationToggleMenu from '../../hooks/useNavigationToggleMenu';
 
 interface NavigationMenuMainProps {
   title: string,
@@ -13,28 +14,43 @@ interface NavigationMenuMainProps {
 }
 
 const MenuListWrapper = styled.li`
-  /* margin-bottom: 30px; */
+  position: relative;
+  background-color: #fff;
 
 `;
 
 const MainMenuLink = styled.a`
-  /* color: var(--main-color); */
   color: #7e8299;
   display: flex;
   align-items: center;
   padding: 15px 0;
   cursor: pointer;
   font-weight: 500;
+  transition: color .3s ease;
+
+  &:hover {
+    color: var(--main-color);
+  }
 `;
 
 const SubMenuToggleBtn = styled.button`
-  color: #7e8299;
   display: flex;
   align-items: center;
   padding: 15px 0;
   cursor: pointer;
   font-weight: 500;
   width: 100%;
+  transition: color .3s ease;
+
+  &:hover {
+    color: var(--main-color);
+  }
+
+  ${(props : { menuOpendStatus: boolean }) => (props.menuOpendStatus ? `
+    color: var(--main-color);
+  ` : `
+    color: #7e8299;
+  `)}
 `;
 
 const MenuIcon = styled.span`
@@ -55,22 +71,25 @@ const MenuArrow = styled.span`
 `;
 
 function NavigationMenuMain({ title, icon, subMenu, menuLink }: NavigationMenuMainProps) {
-  const [subMenuOpend, setSubMenuOpend] = useState(false);
-  const onClickSubmenuToggleBtn = useCallback((): void => {
-    setSubMenuOpend((prevData) => !prevData);
-  }, []);
+  const menuArrowRef = useRef<HTMLSpanElement>(null);
+  const [openSlide, subMenuOpend, setSubMenuOpend, setSubMenuClosed] = useNavigationToggleMenu(0.5, false, menuArrowRef);
 
   return (
     <MenuListWrapper>
       {subMenu ? (
         <>
-          <SubMenuToggleBtn type="button" onClick={onClickSubmenuToggleBtn}>
+          <SubMenuToggleBtn type="button" onClick={subMenuOpend ? setSubMenuClosed : setSubMenuOpend} menuOpendStatus={subMenuOpend}>
             <MenuIcon>{icon}</MenuIcon>
             <MenuName>{title}</MenuName>
-            <MenuArrow><BiChevronDown /></MenuArrow>
+            <MenuArrow ref={menuArrowRef}>
+              <BiChevronDown />
+            </MenuArrow>
           </SubMenuToggleBtn>
           {subMenuOpend && (
-            <NavigationMenuSub subMenu={subMenu} />
+            <NavigationMenuSub
+              subMenu={subMenu}
+              slideAnimation={openSlide}
+            />
           )}
         </>
       ) : (
