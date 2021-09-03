@@ -8,6 +8,11 @@ const SignUpButton = styled.button`
   padding: 10px 15px;
   color: #fff;
   background-color: var(--main-color);
+  transition: background-color .2s;
+
+  &:hover {
+    background-color: var(--main-color-bold);
+  }
 `;
 
 function HomeTopButton() {

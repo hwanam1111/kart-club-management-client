@@ -20,6 +20,7 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   right: 0;
+  background-color: #fff;;
 `;
 
 const NotificationToggleBtn = styled.button`

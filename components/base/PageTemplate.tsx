@@ -13,17 +13,20 @@ interface PageTempleteProps {
 }
 
 const Wrapper = styled.main`
-    background-color: #f5f8fa;
-    margin: 65px 30px 0 280px;
-    padding: 30px;
-    border-radius: 1.5rem;
-    min-height: calc(100vh - 65px);
-  `;
+  background-color: #f5f8fa;
+  margin: 65px 30px 0 280px;
+  padding: 30px;
+  border-radius: 1.5rem;
+  min-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+`;
 
 const PageTopWrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 30px;
 `;
 
 function PageTemplete({ children, pageTitle, pagePath, topRightContent }: PageTempleteProps) {
