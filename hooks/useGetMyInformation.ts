@@ -10,8 +10,10 @@ function useGetMyInformation() {
   const { data, error } = useSelector((state: RootState) => state.user.myInformation);
 
   useEffect(() => {
-    dispatch(getMyInformationAsync.request());
-  }, []);
+    if (!data) {
+      dispatch(getMyInformationAsync.request());
+    }
+  }, [data]);
 
   useEffect(() => {
     if (error) {
