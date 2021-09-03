@@ -38,7 +38,7 @@ const LoginButton = styled.button`
 
 const LoginAvatar = styled.img`
   margin-top: 50px;
-  width: 350px;
+  width: 310px;
 `;
 
 function HomePleaseLogin() {
