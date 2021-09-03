@@ -8,9 +8,7 @@ const NavLogoWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const LogoLink = styled.a`
-  cursor: pointer;
-`;
+const LogoLink = styled.a``;
 
 const LogoImage = styled.img`
   width: 90px;

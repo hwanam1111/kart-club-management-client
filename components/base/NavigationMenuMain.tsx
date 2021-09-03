@@ -24,7 +24,6 @@ const MainMenuLink = styled.a`
   display: flex;
   align-items: center;
   padding: 15px 0;
-  cursor: pointer;
   font-weight: 500;
   transition: color .3s ease;
 
@@ -37,7 +36,6 @@ const SubMenuToggleBtn = styled.button`
   display: flex;
   align-items: center;
   padding: 15px 0;
-  cursor: pointer;
   font-weight: 500;
   width: 100%;
   transition: color .3s ease;

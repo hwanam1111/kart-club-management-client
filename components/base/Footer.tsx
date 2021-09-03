@@ -21,7 +21,6 @@ const CopyRight = styled.span`
   & > a {
     margin-left: 7px;
     color: #3f4254;
-    cursor: pointer;
     font-weight: 600;
   }
 `;
@@ -31,7 +30,6 @@ const GithubLink = styled.a`
   align-content: center;
   justify-content: center;
   color: #3f4254;
-  cursor: pointer;
   font-weight: 600;
 
   & > svg {

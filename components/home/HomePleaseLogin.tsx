@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+
+import LoginModal from '../common/LoginModal';
 
 const HomePleaseLoginWrapper = styled.section`
   background-color: #fff;
@@ -42,21 +44,34 @@ const LoginAvatar = styled.img`
 `;
 
 function HomePleaseLogin() {
+  const [modalOpend, setModalOpend] = useState(false);
+
+  const onClickLoginBtn = useCallback((): void => {
+    setModalOpend(true);
+  }, []);
+
+  const onCloseModal = useCallback((): void => {
+    setModalOpend(false);
+  }, []);
+
   return (
-    <HomePleaseLoginWrapper>
-      <PleaseLoginTitle>
-        로그인을 해주세요!
-      </PleaseLoginTitle>
-      <PleaseLoginContent>
-        <p>로그인을 하고, 내가 원하는 클럽에 가입신청도 하고,</p>
-        <p>클럽에 소속이 되어있으면, 클럽원들과 소통해봐요!</p>
-        <p>클럽의 운영진이라면, 클럽관리도 할 수 있어요!</p>
-      </PleaseLoginContent>
-      <LoginButton type="button">
-        로그인
-      </LoginButton>
-      <LoginAvatar src="/static/signin.png" alt="로그인 아바타" title="로그인 아바타" />
-    </HomePleaseLoginWrapper>
+    <>
+      <HomePleaseLoginWrapper>
+        <PleaseLoginTitle>
+          로그인을 해주세요!
+        </PleaseLoginTitle>
+        <PleaseLoginContent>
+          <p>로그인을 하고, 내가 원하는 클럽에 가입신청도 하고,</p>
+          <p>클럽에 소속이 되어있으면, 클럽원들과 소통해봐요!</p>
+          <p>클럽의 운영진이라면, 클럽관리도 할 수 있어요!</p>
+        </PleaseLoginContent>
+        <LoginButton type="button" onClick={onClickLoginBtn}>
+          로그인
+        </LoginButton>
+        <LoginAvatar src="/static/signin.png" alt="로그인 아바타" title="로그인 아바타" />
+      </HomePleaseLoginWrapper>
+      {modalOpend && <LoginModal onCloseModal={onCloseModal} />}
+    </>
   );
 }
 

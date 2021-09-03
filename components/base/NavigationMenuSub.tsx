@@ -22,7 +22,6 @@ const SubMenuLink = styled.a`
   display: flex;
   align-items: center;
   padding: 11px 15px;
-  cursor: pointer;
 `;
 
 const DotIcon = styled.span`
