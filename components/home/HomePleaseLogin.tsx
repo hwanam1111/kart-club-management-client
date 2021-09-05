@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import LoginModal from '../common/LoginModal';
+import useModalToggle from '../../hooks/useModalToggle';
 
 const HomePleaseLoginWrapper = styled.section`
   background-color: #fff;
@@ -44,15 +45,7 @@ const LoginAvatar = styled.img`
 `;
 
 function HomePleaseLogin() {
-  const [modalOpend, setModalOpend] = useState(false);
-
-  const onClickLoginBtn = useCallback((): void => {
-    setModalOpend(true);
-  }, []);
-
-  const onCloseModal = useCallback((): void => {
-    setModalOpend(false);
-  }, []);
+  const [animation, modalOpend, setModalOpend, setModalClosed] = useModalToggle(0.3, false);
 
   return (
     <>
@@ -65,12 +58,17 @@ function HomePleaseLogin() {
           <p>클럽에 소속이 되어있으면, 클럽원들과 소통해봐요!</p>
           <p>클럽의 운영진이라면, 클럽관리도 할 수 있어요!</p>
         </PleaseLoginContent>
-        <LoginButton type="button" onClick={onClickLoginBtn}>
+        <LoginButton type="button" onClick={setModalOpend}>
           로그인
         </LoginButton>
         <LoginAvatar src="/static/signin.png" alt="로그인 아바타" title="로그인 아바타" />
       </HomePleaseLoginWrapper>
-      {modalOpend && <LoginModal onCloseModal={onCloseModal} />}
+      {modalOpend && (
+        <LoginModal
+          animation={animation}
+          onCloseModal={setModalClosed}
+        />
+      )}
     </>
   );
 }

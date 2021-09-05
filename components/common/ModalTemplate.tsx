@@ -51,14 +51,20 @@ const ModalTitle = styled.h3`
 
 interface ModalTemplateProps {
   title: string,
+  animation: {
+    ref: any,
+    style: {
+      transform: string
+    }
+  },
   onCloseModal: () => void,
   children: React.ReactNode
 }
 
-function ModalTemplate({ title, onCloseModal, children }: ModalTemplateProps) {
+function ModalTemplate({ title, animation, onCloseModal, children }: ModalTemplateProps) {
   return (
     <ModalOverlay>
-      <ModalWrppaer>
+      <ModalWrppaer {...animation}>
         <CloseBtn type="button" onClick={onCloseModal}>
           <AiOutlineClose />
         </CloseBtn>

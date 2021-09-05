@@ -25,10 +25,16 @@ const LoginForm = styled.form`
 `;
 
 interface LoginModalProps {
+  animation: {
+    ref: any,
+    style: {
+      transform: string
+    }
+  },
   onCloseModal: () => void
 }
 
-function LoginModal({ onCloseModal }: LoginModalProps) {
+function LoginModal({ animation, onCloseModal }: LoginModalProps) {
   const [email, setEmail] = useState('');
   const onChangeEmail = useCallback((evt: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(evt.target.value);
@@ -44,7 +50,7 @@ function LoginModal({ onCloseModal }: LoginModalProps) {
   }, []);
 
   return (
-    <ModalTemplate title="로그인" onCloseModal={onCloseModal}>
+    <ModalTemplate title="로그인" animation={animation} onCloseModal={onCloseModal}>
       <Link href="/users/signup">
         <SignUpLink>
           아직 회원가입을 하지 않으셨나요?
