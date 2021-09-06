@@ -30,13 +30,15 @@ const useEmailInput = (defaultValue: string) => {
   useEffect(() => {
     if (data !== null) {
       if (data === 'duplicate-email') {
-        setVerifyMessage('이미 가입된 이메일입니다.');
-      } else if (data === 'available-email') {
-        setVerifyMessage('complete');
+        return setVerifyMessage('이미 가입된 이메일입니다.');
       }
-    } else {
-      setVerifyMessage(null);
+
+      if (data === 'available-email') {
+        return setVerifyMessage('complete');
+      }
     }
+
+    return setVerifyMessage(null);
   }, [data]);
 
   useEffect(() => {
