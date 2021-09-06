@@ -100,7 +100,16 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
           verifyMessage={nicknameVerifyMessage}
           maxLength={12}
         />
-        <FormSubmitButton buttonText="회원가입" margin="50px auto 0 auto" />
+        <FormSubmitButton
+          buttonText="회원가입"
+          margin="50px auto 0 auto"
+          disabled={
+            emailVerifyMessage !== 'complete'
+            || passwordVerifyMessage !== 'complete'
+            || checkPasswordVerifyMessage !== 'complete'
+            || nicknameVerifyMessage !== 'complete'
+          }
+        />
       </SignUpForm>
     </ModalTemplate>
   );

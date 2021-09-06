@@ -13,16 +13,21 @@ const SubmitButton = styled.button`
   &:hover {
     background-color: var(--main-color-bold);
   }
+
+  &:disabled {
+    background-color: #c7c7c7;
+  }
 `;
 
 interface FormSubmitButtonProps {
   buttonText: string,
-  margin: string
+  margin: string,
+  disabled: boolean
 }
 
-function FormSubmitButton({ buttonText, margin }: FormSubmitButtonProps) {
+function FormSubmitButton({ buttonText, margin, disabled }: FormSubmitButtonProps) {
   return (
-    <SubmitButton type="submit" buttonMargin={margin}>
+    <SubmitButton type="submit" buttonMargin={margin} disabled={disabled}>
       {buttonText}
     </SubmitButton>
   );
