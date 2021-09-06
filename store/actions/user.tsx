@@ -1,7 +1,18 @@
-import { createAsyncAction } from 'typesafe-actions';
+import { createStandardAction, createAsyncAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
 
-import { MyInformationTypes } from '../types/user';
+import { EmailDuplicateCheckTypes, MyInformationTypes } from '../types/user';
+
+export const RESET_EMAIL_DUPLICATE_CHECK = 'user/RESET_EMAIL_DUPLICATE_CHECK';
+export const EMAIL_DUPLICATE_CHECK = 'user/EMAIL_DUPLICATE_CHECK';
+export const EMAIL_DUPLICATE_CHECK_SUCCESS = 'user/EMAIL_DUPLICATE_CHECK_SUCCESS';
+export const EMAIL_DUPLICATE_CHECK_ERROR = 'user/EMAIL_DUPLICATE_CHECK_ERROR';
+export const resetEmailDuplicateCheck = createStandardAction(RESET_EMAIL_DUPLICATE_CHECK)();
+export const emailDuplicateCheckAsync = createAsyncAction(
+  EMAIL_DUPLICATE_CHECK,
+  EMAIL_DUPLICATE_CHECK_SUCCESS,
+  EMAIL_DUPLICATE_CHECK_ERROR,
+)<string, EmailDuplicateCheckTypes, AxiosError>();
 
 export const GET_MY_INFORMATION = 'user/GET_MY_INFORMATION';
 export const GET_MY_INFORMATION_SUCCESS = 'user/GET_MY_INFORMATION_SUCCESS';

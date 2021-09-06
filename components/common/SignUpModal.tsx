@@ -37,7 +37,7 @@ interface SignUpModalProps {
 }
 
 function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
-  const [email, onChangeEmail, verifyMessage] = useEmailInput('');
+  const [email, onChangeEmail, emailVerifyMessage] = useEmailInput('');
   const [password, onChangePassword] = usePasswordInput('');
   const [checkPassword, onChangeCheckPassword] = usePasswordInput('');
   const [nickname, onChangeNickname] = useNicknameInput('');
@@ -45,8 +45,6 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
   const onSubmitSignUpForm = useCallback((evt: React.FormEvent): void => {
     evt.preventDefault();
   }, []);
-
-  console.log(verifyMessage);
 
   return (
     <ModalTemplate title="회원가입" animation={animation} onCloseModal={onCloseModal}>
@@ -65,7 +63,7 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
           placeholder="이메일을 입력해주세요."
           value={email}
           onChange={onChangeEmail}
-          verifyMessage=""
+          verifyMessage={emailVerifyMessage}
           maxLength={254}
         />
         <LabelInput

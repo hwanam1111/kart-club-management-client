@@ -9,6 +9,10 @@ export interface DefaultAsyncTypes {
   error: any | null
 }
 
+export interface EmailDuplicateCheckTypes extends DefaultAsyncTypes {
+  data: any
+}
+
 export interface MyInformationTypes extends DefaultAsyncTypes {
   data: {
     id: number,
@@ -21,5 +25,6 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
 }
 
 export interface InitialStateUserDto {
+  emailDuplicateCheck: EmailDuplicateCheckTypes,
   myInformation: MyInformationTypes,
 }
