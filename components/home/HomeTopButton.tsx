@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useModalToggle from '../../hooks/useModalToggle';
+import SignUpModal from '../common/SignUpModal';
+
 const HomeTopButtonWrapper = styled.div``;
 
 const SignUpButton = styled.button`
@@ -16,12 +19,22 @@ const SignUpButton = styled.button`
 `;
 
 function HomeTopButton() {
+  const [animation, modalOpend, setModalOpend, setModalClosed] = useModalToggle(0.3, false);
+
   return (
-    <HomeTopButtonWrapper>
-      <SignUpButton type="button">
-        회원가입 하러가기
-      </SignUpButton>
-    </HomeTopButtonWrapper>
+    <>
+      <HomeTopButtonWrapper>
+        <SignUpButton type="button" onClick={setModalOpend}>
+          회원가입 하러가기
+        </SignUpButton>
+      </HomeTopButtonWrapper>
+      {modalOpend && (
+        <SignUpModal
+          animation={animation}
+          onCloseModal={setModalClosed}
+        />
+      )}
+    </>
   );
 }
 
