@@ -62,6 +62,7 @@ function LoginModal({ animation, onCloseModal }: LoginModalProps) {
       <LoginForm onSubmit={onSubmitLoginForm}>
         <LabelInput
           label="이메일"
+          inputLabel="email"
           type="email"
           placeholder="이메일을 입력해주세요."
           value={email}
@@ -71,6 +72,7 @@ function LoginModal({ animation, onCloseModal }: LoginModalProps) {
         />
         <LabelInput
           label="비밀번호"
+          inputLabel="password"
           type="password"
           placeholder="비밀번호를 입력해주세요."
           value={password}
