@@ -10,7 +10,19 @@ export interface DefaultAsyncTypes {
 }
 
 export interface EmailDuplicateCheckTypes extends DefaultAsyncTypes {
-  data: any
+  data: string | null
+}
+
+export interface VeifyNicknameTypes extends DefaultAsyncTypes {
+  data: {
+    accessId: string,
+    name: string,
+    level: number
+  } | string | null
+}
+
+export interface SignUpTypes extends DefaultAsyncTypes {
+  data: string | null
 }
 
 export interface MyInformationTypes extends DefaultAsyncTypes {
@@ -26,5 +38,7 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
 
 export interface InitialStateUserDto {
   emailDuplicateCheck: EmailDuplicateCheckTypes,
+  verifyNickname: VeifyNicknameTypes,
+  signUp: SignUpTypes,
   myInformation: MyInformationTypes,
 }
