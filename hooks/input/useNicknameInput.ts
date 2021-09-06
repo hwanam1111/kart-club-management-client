@@ -16,7 +16,7 @@ const useNicknameInput = (defaultValue: string) => {
 
     if (nickname === '') {
       setVerifyMessage('닉네임을 입력해주세요.');
-    } else if (/[~!@#$%^&*()_+-|<>?:;`,{}\]\[/\'\"\ \\']/gi.test(nickname)) {
+    } else if (/[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩ ]/g.test(nickname)) {
       setVerifyMessage('특수문자와 공백은 입력할 수 없습니다.');
     } else if (textCount > 12) {
       setVerifyMessage('닉네임 글자수가 초과되었습니다.');

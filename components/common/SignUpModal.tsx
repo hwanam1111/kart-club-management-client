@@ -93,7 +93,7 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
         <LabelInput
           label="카트라이더 닉네임"
           inputLabel="nickname"
-          type="email"
+          type="text"
           placeholder="현재 사용중인 카트라이더 닉네임을 입력해주세요."
           value={nickname}
           onChange={onChangeNickname}
