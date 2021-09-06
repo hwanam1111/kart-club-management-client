@@ -24,6 +24,8 @@ const ModalWrppaer = styled.div`
   border-radius: 7px;
   background-color: #fff;
   text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
 `;
 
 const CloseBtn = styled.button`
