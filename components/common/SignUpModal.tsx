@@ -43,8 +43,7 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
     checkPassword, checkPasswordVerifyMessage,
     onChangePassword,
   ] = useCheckPasswordInput('', '');
-  // const [checkPassword, onChangeCheckPassword, checkPasswordVerifyMessage] = useCheckPasswordInput('');
-  const [nickname, onChangeNickname] = useNicknameInput('');
+  const [nickname, onChangeNickname, nicknameVerifyMessage] = useNicknameInput('');
 
   const onSubmitSignUpForm = useCallback((evt: React.FormEvent): void => {
     evt.preventDefault();
@@ -98,7 +97,7 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
           placeholder="현재 사용중인 카트라이더 닉네임을 입력해주세요."
           value={nickname}
           onChange={onChangeNickname}
-          verifyMessage=""
+          verifyMessage={nicknameVerifyMessage}
           maxLength={12}
         />
         <FormSubmitButton buttonText="회원가입" margin="50px auto 0 auto" />
