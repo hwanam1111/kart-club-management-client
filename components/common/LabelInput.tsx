@@ -68,6 +68,7 @@ const CompleteIcon = styled.i`
 interface LabelInputProps {
   label: string,
   type: string,
+  inputLabel: string,
   placeholder: string,
   value: string,
   onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void,
@@ -75,7 +76,7 @@ interface LabelInputProps {
   maxLength: number,
 }
 
-function LabelInput({ label, type, placeholder, value, onChange, verifyMessage, maxLength }: LabelInputProps) {
+function LabelInput({ label, type, inputLabel, placeholder, value, onChange, verifyMessage, maxLength }: LabelInputProps) {
   const inputFocusRef = useRef<HTMLInputElement>();
 
   const onFocusInput = useCallback(() => {
@@ -92,6 +93,7 @@ function LabelInput({ label, type, placeholder, value, onChange, verifyMessage, 
       <InputBox ref={inputFocusRef}>
         <Input
           type={type}
+          data-label={inputLabel}
           placeholder={placeholder}
           onChange={onChange}
           value={value}

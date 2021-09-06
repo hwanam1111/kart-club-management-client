@@ -6,7 +6,7 @@ import ModalTemplate from './ModalTemplate';
 import LabelInput from './LabelInput';
 import FormSubmitButton from './FormSubmitButton';
 import useEmailInput from '../../hooks/input/useEmailInput';
-import usePasswordInput from '../../hooks/input/usePasswordInput';
+import useCheckPasswordInput from '../../hooks/input/useCheckPasswordInput';
 import useNicknameInput from '../../hooks/input/useNicknameInput';
 
 const LoginLink = styled.a`
@@ -38,8 +38,12 @@ interface SignUpModalProps {
 
 function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
   const [email, onChangeEmail, emailVerifyMessage] = useEmailInput('');
-  const [password, onChangePassword] = usePasswordInput('');
-  const [checkPassword, onChangeCheckPassword] = usePasswordInput('');
+  const [
+    password, passwordVerifyMessage,
+    checkPassword, checkPasswordVerifyMessage,
+    onChangePassword,
+  ] = useCheckPasswordInput('', '');
+  // const [checkPassword, onChangeCheckPassword, checkPasswordVerifyMessage] = useCheckPasswordInput('');
   const [nickname, onChangeNickname] = useNicknameInput('');
 
   const onSubmitSignUpForm = useCallback((evt: React.FormEvent): void => {
@@ -59,6 +63,7 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
       <SignUpForm onSubmit={onSubmitSignUpForm}>
         <LabelInput
           label="이메일"
+          inputLabel="email"
           type="email"
           placeholder="이메일을 입력해주세요."
           value={email}
@@ -68,24 +73,27 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
         />
         <LabelInput
           label="비밀번호"
+          inputLabel="password"
           type="password"
-          placeholder="영문, 숫자, 특수문자 포함 8~16자리"
+          placeholder="영어, 숫자 포함 8~16자리"
           value={password}
           onChange={onChangePassword}
-          verifyMessage=""
+          verifyMessage={passwordVerifyMessage}
           maxLength={16}
         />
         <LabelInput
           label="비밀번호 확인"
+          inputLabel="password-check"
           type="password"
           placeholder="비밀번호를 한번 더 입력해주세요."
           value={checkPassword}
-          onChange={onChangeCheckPassword}
-          verifyMessage=""
+          onChange={onChangePassword}
+          verifyMessage={checkPasswordVerifyMessage}
           maxLength={16}
         />
         <LabelInput
           label="카트라이더 닉네임"
+          inputLabel="nickname"
           type="email"
           placeholder="현재 사용중인 카트라이더 닉네임을 입력해주세요."
           value={nickname}
