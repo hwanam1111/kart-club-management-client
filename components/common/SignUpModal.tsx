@@ -172,9 +172,10 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
           icon: 'error',
           text: '서버에러가 발생하였습니다.\n잠시후 다시 이용해주세요.',
         });
-
-        dispatch(resetSignUp());
       }
+
+      dispatch(resetVerifyNickname());
+      dispatch(resetSignUp());
     }
   }, [signUp.error]);
 
