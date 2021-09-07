@@ -3,8 +3,8 @@ import { BiMessageSquareDetail } from 'react-icons/bi';
 import styled from 'styled-components';
 
 import useGetMyInformation from '../../hooks/useGetMyInformation';
-import useToggleMenu from '../../hooks/useToggleMenu';
-import useSlideToggleMenu from '../../hooks/useFixedSlideToggleMenu';
+import useToggleMenu from '../../hooks/toggleMenu/useToggleMenu';
+import useSlideToggleMenu from '../../hooks/toggleMenu/useFixedSlideToggleMenu';
 import HeaderUserMenu from './HeaderUserMenu';
 import HeaderNotification from './HeaderNotification';
 

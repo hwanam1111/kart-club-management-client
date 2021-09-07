@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import NavigationMenuSub from './NavigationMenuSub';
-import useNavigationToggleMenu from '../../hooks/useNavigationToggleMenu';
+import useNavigationToggleMenu from '../../hooks/toggleMenu/useNavigationToggleMenu';
 
 interface NavigationMenuMainProps {
   title: string,

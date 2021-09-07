@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import LoginModal from '../common/LoginModal';
-import useModalToggle from '../../hooks/useModalToggle';
 import SignUpModal from '../common/SignUpModal';
-import useModalChange from '../../hooks/useModalChange';
+import useModalToggle from '../../hooks/modal/useModalToggle';
+import useModalChange from '../../hooks/modal/useModalChange';
 
 const HomePleaseLoginWrapper = styled.section`
   background-color: #fff;

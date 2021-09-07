@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import HeaderUserMenuProfile from './HeaderUserMenuProfile';
 import HeaderUserMenuItems from './HeaderUserMenuItems';
-import useFadeIn from '../../hooks/useFadeIn';
+import useFadeIn from '../../hooks/toggleMenu/useFadeIn';
 
 const HeaderUserMenuWrapper = styled.div`
   position: fixed;
