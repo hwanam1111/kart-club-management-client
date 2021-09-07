@@ -125,6 +125,8 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
           icon: 'error',
           html: '현재 카트라이더 닉네임에 존재하지 않는 닉네임입니다.<br/><br/>닉네임을 다시 확인해주세요.',
         });
+
+        dispatch(resetVerifyNickname());
       } else {
         dispatch(signUpAsync.request({
           email,
