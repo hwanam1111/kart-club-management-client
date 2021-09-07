@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
@@ -14,8 +13,7 @@ import LabelInput from './LabelInput';
 import FormSubmitButton from './FormSubmitButton';
 import Loading from './Loading';
 
-const LoginLink = styled.a`
-  display: block;
+const LoginButton = styled.button`
   margin-top: 30px;
   font-size: 1.1rem;
   color: #b5b5c3;
@@ -38,10 +36,11 @@ interface SignUpModalProps {
       transform: string
     }
   },
-  onCloseModal: () => void
+  onCloseModal: () => void,
+  onChangeLoginModal: () => void
 }
 
-function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
+function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModalProps) {
   const dispatch = useDispatch();
 
   const [email, onChangeEmail, emailVerifyMessage] = useEmailInput('');
@@ -182,14 +181,12 @@ function SignUpModal({ animation, onCloseModal }: SignUpModalProps) {
   return (
     <>
       <ModalTemplate title="회원가입" animation={animation} onCloseModal={onCloseModal}>
-        <Link href="/users/login">
-          <LoginLink>
-            이미 회원가입을 하셨나요?
-            &nbsp;
-            <b>로그인</b>
-            하러가기
-          </LoginLink>
-        </Link>
+        <LoginButton type="button" onClick={onChangeLoginModal}>
+          이미 회원가입을 하셨나요?
+          &nbsp;
+          <b>로그인</b>
+          하러가기
+        </LoginButton>
         <SignUpForm onSubmit={onSubmitSignUpForm}>
           <LabelInput
             label="이메일"

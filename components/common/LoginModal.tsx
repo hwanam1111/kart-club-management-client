@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 import ModalTemplate from './ModalTemplate';
@@ -7,8 +6,7 @@ import LabelInput from './LabelInput';
 import FormSubmitButton from './FormSubmitButton';
 import LoginModalFindUserInfoButton from './LoginModalFindUserInfoButton';
 
-const SignUpLink = styled.a`
-  display: block;
+const SignUpButton = styled.button`
   margin-top: 30px;
   font-size: 1.1rem;
   color: #b5b5c3;
@@ -31,10 +29,11 @@ interface LoginModalProps {
       transform: string
     }
   },
-  onCloseModal: () => void
+  onCloseModal: () => void,
+  onChangeSignUpModal: () => void
 }
 
-function LoginModal({ animation, onCloseModal }: LoginModalProps) {
+function LoginModal({ animation, onCloseModal, onChangeSignUpModal }: LoginModalProps) {
   const [email, setEmail] = useState('');
   const onChangeEmail = useCallback((evt: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(evt.target.value);
@@ -51,14 +50,12 @@ function LoginModal({ animation, onCloseModal }: LoginModalProps) {
 
   return (
     <ModalTemplate title="로그인" animation={animation} onCloseModal={onCloseModal}>
-      <Link href="/users/signup">
-        <SignUpLink>
-          아직 회원가입을 하지 않으셨나요?
-          &nbsp;
-          <b>회원가입</b>
-          하러가기
-        </SignUpLink>
-      </Link>
+      <SignUpButton onClick={onChangeSignUpModal}>
+        아직 회원가입을 하지 않으셨나요?
+        &nbsp;
+        <b>회원가입</b>
+        하러가기
+      </SignUpButton>
       <LoginForm onSubmit={onSubmitLoginForm}>
         <LabelInput
           label="이메일"
