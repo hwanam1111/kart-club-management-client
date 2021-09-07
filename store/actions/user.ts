@@ -1,7 +1,13 @@
 import { createStandardAction, createAsyncAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
 
-import { EmailDuplicateCheckTypes, VeifyNicknameTypes, SignUpTypes, MyInformationTypes } from '../types/user';
+import {
+  EmailDuplicateCheckTypes,
+  VeifyNicknameTypes,
+  SignUpTypes,
+  LoginTypes,
+  MyInformationTypes,
+} from '../types/user';
 
 export const RESET_EMAIL_DUPLICATE_CHECK = 'user/RESET_EMAIL_DUPLICATE_CHECK';
 export const EMAIL_DUPLICATE_CHECK = 'user/EMAIL_DUPLICATE_CHECK';
@@ -40,6 +46,20 @@ export const signUpAsync = createAsyncAction(
   nickname: string,
   accessId: string
 }, SignUpTypes, AxiosError>();
+
+export const RESET_LOGIN = 'user/RESET_LOGIN';
+export const LOGIN = 'user/LOGIN';
+export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'user/LOGIN_ERROR';
+export const resetLogin = createStandardAction(RESET_LOGIN)();
+export const loginAsync = createAsyncAction(
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+)<{
+  email: string,
+  password: string
+}, LoginTypes, AxiosError>();
 
 export const GET_MY_INFORMATION = 'user/GET_MY_INFORMATION';
 export const GET_MY_INFORMATION_SUCCESS = 'user/GET_MY_INFORMATION_SUCCESS';

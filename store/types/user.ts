@@ -25,6 +25,10 @@ export interface SignUpTypes extends DefaultAsyncTypes {
   data: string | null
 }
 
+export interface LoginTypes extends DefaultAsyncTypes {
+  data: string | null
+}
+
 export interface MyInformationTypes extends DefaultAsyncTypes {
   data: {
     id: number,
@@ -40,5 +44,6 @@ export interface InitialStateUserDto {
   emailDuplicateCheck: EmailDuplicateCheckTypes,
   verifyNickname: VeifyNicknameTypes,
   signUp: SignUpTypes,
+  login: LoginTypes,
   myInformation: MyInformationTypes,
 }
