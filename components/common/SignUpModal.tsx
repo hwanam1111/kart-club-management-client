@@ -165,7 +165,7 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
       if (signUp.error.response.data.data) {
         Swal.fire({
           icon: 'error',
-          text: signUp.error.response.data.data,
+          text: signUp.error.response.data.message,
         });
       } else {
         Swal.fire({
