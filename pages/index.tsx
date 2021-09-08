@@ -12,7 +12,7 @@ function MainPage() {
     <PageTemplete
       pageTitle="홈"
       pagePath="홈 / 메인페이지"
-      topRightContent={<HomeTopButton />}
+      topRightContent={(!myInformation || myInformation === 'no-user-info') && <HomeTopButton />}
     >
       {myInformation && myInformation !== 'no-user-info' ? (
         <>

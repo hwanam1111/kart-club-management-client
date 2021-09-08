@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import useModalChange from '../../hooks/modal/useModalChange';
 
+import useModalChange from '../../hooks/modal/useModalChange';
 import useModalToggle from '../../hooks/modal/useModalToggle';
 import LoginModal from '../common/LoginModal';
 import SignUpModal from '../common/SignUpModal';
