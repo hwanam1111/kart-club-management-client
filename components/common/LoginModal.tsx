@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
 import { RootState } from '../../store/reducers';
-import { getMyInformationAsync, loginAsync, resetLogin } from '../../store/actions/user';
+import { getMyInformationAsync } from '../../store/actions/user';
+import { loginAsync, resetLogin } from '../../store/actions/auth';
 import ModalTemplate from './ModalTemplate';
 import LabelInput from './LabelInput';
 import FormSubmitButton from './FormSubmitButton';
@@ -41,7 +42,7 @@ interface LoginModalProps {
 
 function LoginModal({ animation, onCloseModal, onChangeSignUpModal }: LoginModalProps) {
   const dispatch = useDispatch();
-  const { loading, data, error } = useSelector((state: RootState) => state.user.login);
+  const { loading, data, error } = useSelector((state: RootState) => state.auth.login);
 
   const [email, onChangeEmail] = useCheckBlankInput('');
   const [password, onChangePassword] = useCheckBlankInput('');

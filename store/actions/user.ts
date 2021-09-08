@@ -4,8 +4,6 @@ import { AxiosError } from 'axios';
 import {
   EmailDuplicateCheckTypes,
   VeifyNicknameTypes,
-  SignUpTypes,
-  LoginTypes,
   MyInformationTypes,
 } from '../types/user';
 
@@ -30,36 +28,6 @@ export const verifyNicknameAsync = createAsyncAction(
   VERIFY_NICKNAME_SUCCESS,
   VERIFY_NICKNAME_ERROR,
 )<string, VeifyNicknameTypes, AxiosError>();
-
-export const RESET_SIGN_UP = 'user/RESET_SIGN_UP';
-export const SIGN_UP = 'user/SIGN_UP';
-export const SIGN_UP_SUCCESS = 'user/SIGN_UP_SUCCESS';
-export const SIGN_UP_ERROR = 'user/SIGN_UP_ERROR';
-export const resetSignUp = createStandardAction(RESET_SIGN_UP)();
-export const signUpAsync = createAsyncAction(
-  SIGN_UP,
-  SIGN_UP_SUCCESS,
-  SIGN_UP_ERROR,
-)<{
-  email: string,
-  password: string,
-  nickname: string,
-  accessId: string
-}, SignUpTypes, AxiosError>();
-
-export const RESET_LOGIN = 'user/RESET_LOGIN';
-export const LOGIN = 'user/LOGIN';
-export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'user/LOGIN_ERROR';
-export const resetLogin = createStandardAction(RESET_LOGIN)();
-export const loginAsync = createAsyncAction(
-  LOGIN,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-)<{
-  email: string,
-  password: string
-}, LoginTypes, AxiosError>();
 
 export const GET_MY_INFORMATION = 'user/GET_MY_INFORMATION';
 export const GET_MY_INFORMATION_SUCCESS = 'user/GET_MY_INFORMATION_SUCCESS';

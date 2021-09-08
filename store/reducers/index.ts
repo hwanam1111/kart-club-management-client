@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 
+import auth from './auth';
 import user from './user';
 
 interface StateType {
@@ -18,6 +19,7 @@ const rootReducer = (state: StateType, action: ActionType) => {
       return action.payload;
     default: {
       const combineReducer = combineReducers({
+        auth,
         user,
       });
 
