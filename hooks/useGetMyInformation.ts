@@ -1,19 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
 import { RootState } from '../store/reducers';
-import { getMyInformationAsync } from '../store/actions/user';
 
 function useGetMyInformation() {
-  const dispatch = useDispatch();
   const { data, error } = useSelector((state: RootState) => state.user.myInformation);
-
-  useEffect(() => {
-    if (!data) {
-      dispatch(getMyInformationAsync.request());
-    }
-  }, [data]);
 
   useEffect(() => {
     if (error) {

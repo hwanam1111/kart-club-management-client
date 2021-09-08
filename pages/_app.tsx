@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import Swal from 'sweetalert2';
 
 import wrapper from '../store/configureStore';
 import GlobalStyles from '../GlobalStyles';
+import { RootState } from '../store/reducers';
+import { getMyInformationAsync } from '../store/actions/user';
 
 function App({ Component }: AppProps) {
+  const dispatch = useDispatch();
+  const { data, error } = useSelector((state: RootState) => state.user.myInformation);
+
+  useEffect(() => {
+    dispatch(getMyInformationAsync.request());
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        icon: 'error',
+        text: '서버에러가 발생하였습니다.\n잠시후 다시 이용해주세요.',
+      });
+    }
+  }, [error]);
+
   return (
     <>
       <Head>
@@ -26,7 +46,7 @@ function App({ Component }: AppProps) {
         <title>.</title>
       </Head>
       <GlobalStyles />
-      <Component />
+      {(data || error) && <Component />}
     </>
   );
 }
