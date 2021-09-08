@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import {
   SignUpTypes,
   LoginTypes,
+  LogoutTypes,
 } from '../types/auth';
 
 export const RESET_SIGN_UP = 'auth/RESET_SIGN_UP';
@@ -35,3 +36,14 @@ export const loginAsync = createAsyncAction(
   email: string,
   password: string
 }, LoginTypes, AxiosError>();
+
+export const RESET_LOGOUT = 'auth/RESET_LOGOUT';
+export const LOGOUT = 'auth/LOGOUT';
+export const LOGOUT_SUCCESS = 'auth/LOGOUT_SUCCESS';
+export const LOGOUT_ERROR = 'auth/LOGOUT_ERROR';
+export const resetLogout = createStandardAction(RESET_LOGOUT)();
+export const logoutAsync = createAsyncAction(
+  LOGOUT,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
+)<undefined, LogoutTypes, AxiosError>();

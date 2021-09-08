@@ -5,6 +5,7 @@ import { InitialStateAuthDto, AuthAction } from '../types/auth';
 import {
   resetSignUp, signUpAsync,
   resetLogin, loginAsync,
+  resetLogout, logoutAsync,
 } from '../actions/auth';
 
 const initialState: InitialStateAuthDto = {
@@ -14,6 +15,11 @@ const initialState: InitialStateAuthDto = {
     error: null,
   },
   login: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  logout: {
     loading: false,
     data: null,
     error: null,
@@ -60,6 +66,26 @@ const authReducer = createReducer<InitialStateAuthDto, AuthAction>(initialState)
     draft.login.loading = false;
     draft.login.data = null;
     draft.login.error = action.payload;
+  }))
+  .handleAction(resetLogout, (state) => produce(state, (draft) => {
+    draft.logout.loading = false;
+    draft.logout.data = null;
+    draft.logout.error = null;
+  }))
+  .handleAction(logoutAsync.request, (state) => produce(state, (draft) => {
+    draft.logout.loading = true;
+    draft.logout.data = null;
+    draft.logout.error = null;
+  }))
+  .handleAction(logoutAsync.success, (state, action) => produce(state, (draft) => {
+    draft.logout.loading = false;
+    draft.logout.data = action.payload.data;
+    draft.logout.error = null;
+  }))
+  .handleAction(logoutAsync.failure, (state, action) => produce(state, (draft) => {
+    draft.logout.loading = false;
+    draft.logout.data = null;
+    draft.logout.error = action.payload;
   }));
 
 export default authReducer;

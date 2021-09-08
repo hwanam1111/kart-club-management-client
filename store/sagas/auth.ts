@@ -2,10 +2,11 @@ import { all, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 import createAsyncSaga from '../../lib/createAsyncSaga';
-import { SignUpTypes, LoginTypes } from '../types/auth';
+import { SignUpTypes, LoginTypes, LogoutTypes } from '../types/auth';
 import {
   signUpAsync, SIGN_UP,
   loginAsync, LOGIN,
+  logoutAsync, LOGOUT,
 } from '../actions/auth';
 
 async function signUpAPI(data: {
@@ -28,9 +29,16 @@ async function loginAPI(data: {
 }
 const login = createAsyncSaga(loginAsync, loginAPI);
 
+async function logoutAPI() {
+  const response = await axios.post<LogoutTypes>('/v1/auth/logout');
+  return response.data;
+}
+const logout = createAsyncSaga(logoutAsync, logoutAPI);
+
 export default function* userSaga() {
   yield all([
     takeLatest(SIGN_UP, signUp),
     takeLatest(LOGIN, login),
+    takeLatest(LOGOUT, logout),
   ]);
 }
