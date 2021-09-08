@@ -12,7 +12,7 @@ import {
 } from '../actions/user';
 
 async function emailDuplicateCheckAPI(email: string) {
-  const response = await axios.get<EmailDuplicateCheckTypes>(`/v1/users/duplicate-check/email/${email}`);
+  const response = await axios.get<EmailDuplicateCheckTypes>(`/v1/users/email/duplicate/${email}`);
   return response.data;
 }
 const emailDuplicateCheck = createAsyncSaga(emailDuplicateCheckAsync, emailDuplicateCheckAPI);
