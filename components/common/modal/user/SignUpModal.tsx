@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
-import { verifyNicknameAsync, resetVerifyNickname, resetSignUp, signUpAsync } from '../../store/actions/auth';
-import { RootState } from '../../store/reducers';
-import useEmailInput from '../../hooks/input/useEmailInput';
-import useCheckPasswordInput from '../../hooks/input/useCheckPasswordInput';
-import useNicknameInput from '../../hooks/input/useNicknameInput';
-import ModalTemplate from './ModalTemplate';
-import LabelInput from './LabelInput';
-import FormSubmitButton from './FormSubmitButton';
-import Loading from './Loading';
+import { verifyNicknameAsync, resetVerifyNickname, resetSignUp, signUpAsync } from '../../../../store/actions/auth';
+import { RootState } from '../../../../store/reducers';
+import useEmailInput from '../../../../hooks/input/useEmailInput';
+import useCheckPasswordInput from '../../../../hooks/input/useCheckPasswordInput';
+import useNicknameInput from '../../../../hooks/input/useNicknameInput';
+import ModalTemplate from '../ModalTemplate';
+import LabelInput from '../../LabelInput';
+import FormSubmitButton from '../../FormSubmitButton';
+import Loading from '../../Loading';
 
 const LoginButton = styled.button`
   margin-top: 30px;
@@ -30,17 +30,14 @@ const SignUpForm = styled.form`
 `;
 
 interface SignUpModalProps {
-  animation: {
+  modalAnimation: {
     ref: any,
-    style: {
-      transform: string
-    }
   },
   onCloseModal: () => void,
   onChangeLoginModal: () => void
 }
 
-function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModalProps) {
+function SignUpModal({ modalAnimation, onCloseModal, onChangeLoginModal }: SignUpModalProps) {
   const dispatch = useDispatch();
   const { verifyNickname, signUp } = useSelector((state: RootState) => state.auth);
 
@@ -182,7 +179,7 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
 
   return (
     <>
-      <ModalTemplate title="회원가입" animation={animation} onCloseModal={onCloseModal}>
+      <ModalTemplate title="회원가입" modalAnimation={modalAnimation} onCloseModal={onCloseModal}>
         <LoginButton type="button" onClick={onChangeLoginModal}>
           이미 회원가입을 하셨나요?
           &nbsp;

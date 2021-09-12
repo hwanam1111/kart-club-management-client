@@ -1,38 +1,39 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeCurrentModal } from '../../store/actions/user';
 
 const useModalToggle = (duration: number, opend: boolean) => {
+  const dispatch = useDispatch();
   const element = useRef<HTMLElement>(null);
-  const [menuOpend, setMenuOpend] = useState(opend);
 
-  const menuOpendHandler = useCallback((): void => {
-    setMenuOpend(true);
+  const [modalOpend, setModalOpend] = useState(opend);
+
+  const modalOpendHandler = useCallback((): void => {
+    setModalOpend(true);
   }, []);
 
   useEffect(() => {
-    if (menuOpend) {
-      element.current.style.transition = `transform ${duration}s ease-in-out`;
-      element.current.style.transform = 'none';
+    if (modalOpend) {
+      setTimeout(() => {
+        element.current.style.transition = `transform ${duration}s ease-in-out`;
+        element.current.style.transform = 'unset';
+      }, 50);
     }
-  }, [menuOpend]);
+  }, [modalOpend]);
 
-  let transform = 'translateY(-100%)';
-
-  const menuClosedHandler = useCallback((): void => {
+  const modalClosedHandler = useCallback((): void => {
     element.current.style.transition = `transform ${duration}s ease-in-out`;
     element.current.style.transform = 'translateY(-100%)';
-    transform = 'none';
 
     setTimeout(() => {
-      setMenuOpend(false);
+      dispatch(changeCurrentModal(null));
+      setModalOpend(false);
     }, duration * 1000);
   }, []);
 
   return [{
     ref: element,
-    style: {
-      transform,
-    },
-  }, menuOpend, menuOpendHandler, menuClosedHandler] as const;
+  }, modalOpend, modalOpendHandler, modalClosedHandler] as const;
 };
 
 export default useModalToggle;

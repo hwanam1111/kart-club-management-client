@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import LoginModal from '../common/LoginModal';
-import SignUpModal from '../common/SignUpModal';
-import useModalToggle from '../../hooks/modal/useModalToggle';
-import useModalChange from '../../hooks/modal/useModalChange';
+import { changeCurrentModal } from '../../store/actions/user';
 
 const HomePleaseLoginWrapper = styled.section`
   background-color: #fff;
@@ -47,10 +45,11 @@ const LoginAvatar = styled.img`
 `;
 
 function HomePleaseLogin() {
-  const [loginAnimation, loginModalOpend, setLoginModalOpend, setLoginModalClosed] = useModalToggle(0.3, false);
-  const [signUpAnimation, signUpModalOpend, setSignUpModalOpend, setSignUpModalClosed] = useModalToggle(0.3, false);
-  const onChangeSignUpModal = useModalChange(setLoginModalClosed, setSignUpModalOpend, 0.5);
-  const onChangeLoginModal = useModalChange(setSignUpModalClosed, setLoginModalOpend, 0.5);
+  const dispatch = useDispatch();
+
+  const onClickLoginBtn = useCallback(() => {
+    dispatch(changeCurrentModal('login'));
+  }, []);
 
   return (
     <>
@@ -63,25 +62,11 @@ function HomePleaseLogin() {
           <p>클럽에 소속이 되어있으면, 클럽원들과 소통해봐요!</p>
           <p>클럽의 운영진이라면, 클럽관리도 할 수 있어요!</p>
         </PleaseLoginContent>
-        <LoginButton type="button" onClick={setLoginModalOpend}>
+        <LoginButton type="button" onClick={onClickLoginBtn}>
           로그인
         </LoginButton>
         <LoginAvatar src="/static/signin.png" alt="로그인 아바타" title="로그인 아바타" />
       </HomePleaseLoginWrapper>
-      {loginModalOpend && (
-        <LoginModal
-          animation={loginAnimation}
-          onCloseModal={setLoginModalClosed}
-          onChangeSignUpModal={onChangeSignUpModal}
-        />
-      )}
-      {signUpModalOpend && (
-        <SignUpModal
-          animation={signUpAnimation}
-          onCloseModal={setSignUpModalClosed}
-          onChangeLoginModal={onChangeLoginModal}
-        />
-      )}
     </>
   );
 }

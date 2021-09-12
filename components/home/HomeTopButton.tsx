@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import useModalChange from '../../hooks/modal/useModalChange';
-import useModalToggle from '../../hooks/modal/useModalToggle';
-import LoginModal from '../common/LoginModal';
-import SignUpModal from '../common/SignUpModal';
+import { changeCurrentModal } from '../../store/actions/user';
 
 const HomeTopButtonWrapper = styled.div``;
 
@@ -21,32 +19,19 @@ const SignUpButton = styled.button`
 `;
 
 function HomeTopButton() {
-  const [loginAnimation, loginModalOpend, setLoginModalOpend, setLoginModalClosed] = useModalToggle(0.3, false);
-  const [signUpAnimation, signUpModalOpend, setSignUpModalOpend, setSignUpModalClosed] = useModalToggle(0.3, false);
-  const onChangeSignUpModal = useModalChange(setLoginModalClosed, setSignUpModalOpend, 0.5);
-  const onChangeLoginModal = useModalChange(setSignUpModalClosed, setLoginModalOpend, 0.5);
+  const dispatch = useDispatch();
+
+  const onClickSignUpBtn = useCallback(() => {
+    dispatch(changeCurrentModal('signUp'));
+  }, []);
 
   return (
     <>
       <HomeTopButtonWrapper>
-        <SignUpButton type="button" onClick={setSignUpModalOpend}>
+        <SignUpButton type="button" onClick={onClickSignUpBtn}>
           회원가입 하러가기
         </SignUpButton>
       </HomeTopButtonWrapper>
-      {loginModalOpend && (
-        <LoginModal
-          animation={loginAnimation}
-          onCloseModal={setLoginModalClosed}
-          onChangeSignUpModal={onChangeSignUpModal}
-        />
-      )}
-      {signUpModalOpend && (
-        <SignUpModal
-          animation={signUpAnimation}
-          onCloseModal={setSignUpModalClosed}
-          onChangeLoginModal={onChangeLoginModal}
-        />
-      )}
     </>
   );
 }

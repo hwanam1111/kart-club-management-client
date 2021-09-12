@@ -25,6 +25,7 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
 }
 
 export interface InitialStateUserDto {
+  currentModal: string | null,
   emailDuplicateCheck: EmailDuplicateCheckTypes,
   myInformation: MyInformationTypes,
 }

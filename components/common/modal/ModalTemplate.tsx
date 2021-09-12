@@ -26,6 +26,7 @@ const ModalWrppaer = styled.div`
   text-align: center;
   max-height: 90vh;
   overflow-y: auto;
+  transform: translateY(-100%);
 `;
 
 const CloseBtn = styled.button`
@@ -53,20 +54,17 @@ const ModalTitle = styled.h3`
 
 interface ModalTemplateProps {
   title: string,
-  animation: {
+  modalAnimation: {
     ref: any,
-    style: {
-      transform: string
-    }
   },
   onCloseModal: () => void,
   children: React.ReactNode
 }
 
-function ModalTemplate({ title, animation, onCloseModal, children }: ModalTemplateProps) {
+function ModalTemplate({ title, modalAnimation, onCloseModal, children }: ModalTemplateProps) {
   return (
     <ModalOverlay>
-      <ModalWrppaer {...animation}>
+      <ModalWrppaer {...modalAnimation}>
         <CloseBtn type="button" onClick={onCloseModal}>
           <AiOutlineClose />
         </CloseBtn>

@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
-import { RootState } from '../../store/reducers';
-import { getMyInformationAsync } from '../../store/actions/user';
-import { loginAsync, resetLogin } from '../../store/actions/auth';
-import ModalTemplate from './ModalTemplate';
-import LabelInput from './LabelInput';
-import FormSubmitButton from './FormSubmitButton';
+import { RootState } from '../../../../store/reducers';
+import { getMyInformationAsync } from '../../../../store/actions/user';
+import { loginAsync, resetLogin } from '../../../../store/actions/auth';
+import ModalTemplate from '../ModalTemplate';
+import LabelInput from '../../LabelInput';
+import FormSubmitButton from '../../FormSubmitButton';
 import LoginModalFindUserInfoButton from './LoginModalFindUserInfoButton';
-import useCheckBlankInput from '../../hooks/input/useCheckBlankInput';
-import Loading from './Loading';
+import useCheckBlankInput from '../../../../hooks/input/useCheckBlankInput';
+import Loading from '../../Loading';
 
 const SignUpButton = styled.button`
   margin-top: 30px;
@@ -30,17 +30,14 @@ const LoginForm = styled.form`
 `;
 
 interface LoginModalProps {
-  animation: {
+  modalAnimation: {
     ref: any,
-    style: {
-      transform: string
-    }
   },
   onCloseModal: () => void,
   onChangeSignUpModal: () => void
 }
 
-function LoginModal({ animation, onCloseModal, onChangeSignUpModal }: LoginModalProps) {
+function LoginModal({ modalAnimation, onCloseModal, onChangeSignUpModal }: LoginModalProps) {
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector((state: RootState) => state.auth.login);
 
@@ -96,7 +93,7 @@ function LoginModal({ animation, onCloseModal, onChangeSignUpModal }: LoginModal
 
   return (
     <>
-      <ModalTemplate title="로그인" animation={animation} onCloseModal={onCloseModal}>
+      <ModalTemplate title="로그인" modalAnimation={modalAnimation} onCloseModal={onCloseModal}>
         <SignUpButton onClick={onChangeSignUpModal}>
           아직 회원가입을 하지 않으셨나요?
           &nbsp;

@@ -8,6 +8,7 @@ import wrapper from '../store/configureStore';
 import GlobalStyles from '../GlobalStyles';
 import { RootState } from '../store/reducers';
 import { getMyInformationAsync } from '../store/actions/user';
+import UserModal from '../components/common/modal/user';
 
 function App({ Component }: AppProps) {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App({ Component }: AppProps) {
       </Head>
       <GlobalStyles />
       {(data || error) && <Component />}
+      <UserModal />
     </>
   );
 }

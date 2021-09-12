@@ -6,6 +6,9 @@ import {
   MyInformationTypes,
 } from '../types/user';
 
+export const CHANGE_CURRENT_MODAL = 'user/CHANGE_CURRENT_MODAL';
+export const changeCurrentModal = createStandardAction(CHANGE_CURRENT_MODAL)<string>();
+
 export const RESET_EMAIL_DUPLICATE_CHECK = 'user/RESET_EMAIL_DUPLICATE_CHECK';
 export const EMAIL_DUPLICATE_CHECK = 'user/EMAIL_DUPLICATE_CHECK';
 export const EMAIL_DUPLICATE_CHECK_SUCCESS = 'user/EMAIL_DUPLICATE_CHECK_SUCCESS';

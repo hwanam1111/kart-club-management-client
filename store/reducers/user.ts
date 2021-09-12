@@ -3,11 +3,13 @@ import { createReducer } from 'typesafe-actions';
 
 import { InitialStateUserDto, UserAction } from '../types/user';
 import {
+  changeCurrentModal,
   resetEmailDuplicateCheck, emailDuplicateCheckAsync,
   getMyInformationAsync,
 } from '../actions/user';
 
 const initialState: InitialStateUserDto = {
+  currentModal: null,
   emailDuplicateCheck: {
     loading: false,
     data: null,
@@ -21,6 +23,9 @@ const initialState: InitialStateUserDto = {
 };
 
 const userReducer = createReducer<InitialStateUserDto, UserAction>(initialState)
+  .handleAction(changeCurrentModal, (state, action) => produce(state, (draft) => {
+    draft.currentModal = action.payload;
+  }))
   .handleAction(resetEmailDuplicateCheck, (state) => produce(state, (draft) => {
     draft.emailDuplicateCheck.loading = false;
     draft.emailDuplicateCheck.data = null;
