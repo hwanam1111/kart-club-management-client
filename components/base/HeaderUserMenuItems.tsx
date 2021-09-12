@@ -25,15 +25,15 @@ function HeaderUserMenuItems() {
   const dispatch = useDispatch();
   const { myInformation } = useGetMyInformation();
 
-  const onClickLoginBtn = useCallback(() => {
+  const onClickLoginBtn = useCallback((): void => {
     dispatch(changeCurrentModal('login'));
   }, []);
 
-  const onClickSignUpBtn = useCallback(() => {
+  const onClickSignUpBtn = useCallback((): void => {
     dispatch(changeCurrentModal('signUp'));
   }, []);
 
-  const onClickLogout = useCallback(() => {
+  const onClickLogout = useCallback((): void => {
     dispatch(logoutAsync.request());
   }, []);
 

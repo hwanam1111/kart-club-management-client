@@ -79,11 +79,11 @@ interface LabelInputProps {
 function LabelInput({ label, type, inputLabel, placeholder, value, onChange, verifyMessage, maxLength }: LabelInputProps) {
   const inputFocusRef = useRef<HTMLInputElement>();
 
-  const onFocusInput = useCallback(() => {
+  const onFocusInput = useCallback((): void => {
     inputFocusRef.current.classList.add('focus');
   }, []);
 
-  const onBlurInput = useCallback(() => {
+  const onBlurInput = useCallback((): void => {
     inputFocusRef.current.classList.remove('focus');
   }, []);
 

@@ -21,7 +21,7 @@ const SignUpButton = styled.button`
 function HomeTopButton() {
   const dispatch = useDispatch();
 
-  const onClickSignUpBtn = useCallback(() => {
+  const onClickSignUpBtn = useCallback((): void => {
     dispatch(changeCurrentModal('signUp'));
   }, []);
 

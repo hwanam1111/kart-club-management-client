@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import {
   EmailDuplicateCheckTypes,
   MyInformationTypes,
+  FindEmailTypes,
 } from '../types/user';
 
 export const CHANGE_CURRENT_MODAL = 'user/CHANGE_CURRENT_MODAL';
@@ -28,3 +29,14 @@ export const getMyInformationAsync = createAsyncAction(
   GET_MY_INFORMATION_SUCCESS,
   GET_MY_INFORMATION_ERROR,
 )<undefined, MyInformationTypes, AxiosError>();
+
+export const RESET_FIND_EMAIL = 'user/RESET_FIND_EMAIL';
+export const FIND_EMAIL = 'user/FIND_EMAIL';
+export const FIND_EMAIL_SUCCESS = 'user/FIND_EMAIL_SUCCESS';
+export const FIND_EMAIL_ERROR = 'user/FIND_EMAIL_ERROR';
+export const resetFindEmail = createStandardAction(RESET_FIND_EMAIL)();
+export const findEmailAsync = createAsyncAction(
+  FIND_EMAIL,
+  FIND_EMAIL_SUCCESS,
+  FIND_EMAIL_ERROR,
+)<string, FindEmailTypes, AxiosError>();

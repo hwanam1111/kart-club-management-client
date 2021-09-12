@@ -19,10 +19,14 @@ const SeparateLine = styled.span`
   font-weight: 100;
 `;
 
-function LoginModalFindUserInfoButton() {
+interface LoginModalFindUserInfoButtonProps {
+  onChangeFindEmailModal: () => void
+}
+
+function LoginModalFindUserInfoButton({ onChangeFindEmailModal }: LoginModalFindUserInfoButtonProps) {
   return (
     <LoginModalFindUserInfoButtonWrapper>
-      <FindUserInfoButton type="button">
+      <FindUserInfoButton type="button" onClick={onChangeFindEmailModal}>
         이메일 찾기
       </FindUserInfoButton>
       <SeparateLine>|</SeparateLine>

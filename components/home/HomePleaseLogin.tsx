@@ -47,7 +47,7 @@ const LoginAvatar = styled.img`
 function HomePleaseLogin() {
   const dispatch = useDispatch();
 
-  const onClickLoginBtn = useCallback(() => {
+  const onClickLoginBtn = useCallback((): void => {
     dispatch(changeCurrentModal('login'));
   }, []);
 

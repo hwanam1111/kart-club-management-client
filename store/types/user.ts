@@ -24,8 +24,15 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
   } | null | string
 }
 
+export interface FindEmailTypes extends DefaultAsyncTypes {
+  data: {
+    email: string
+  }
+}
+
 export interface InitialStateUserDto {
   currentModal: string | null,
   emailDuplicateCheck: EmailDuplicateCheckTypes,
   myInformation: MyInformationTypes,
+  findEmail: FindEmailTypes,
 }

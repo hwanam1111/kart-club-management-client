@@ -6,6 +6,7 @@ import {
   changeCurrentModal,
   resetEmailDuplicateCheck, emailDuplicateCheckAsync,
   getMyInformationAsync,
+  resetFindEmail, findEmailAsync,
 } from '../actions/user';
 
 const initialState: InitialStateUserDto = {
@@ -16,6 +17,11 @@ const initialState: InitialStateUserDto = {
     error: null,
   },
   myInformation: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  findEmail: {
     loading: false,
     data: null,
     error: null,
@@ -60,6 +66,26 @@ const userReducer = createReducer<InitialStateUserDto, UserAction>(initialState)
     draft.myInformation.loading = false;
     draft.myInformation.data = null;
     draft.myInformation.error = action.payload;
+  }))
+  .handleAction(resetFindEmail, (state) => produce(state, (draft) => {
+    draft.findEmail.loading = false;
+    draft.findEmail.data = null;
+    draft.findEmail.error = null;
+  }))
+  .handleAction(findEmailAsync.request, (state) => produce(state, (draft) => {
+    draft.findEmail.loading = true;
+    draft.findEmail.data = null;
+    draft.findEmail.error = null;
+  }))
+  .handleAction(findEmailAsync.success, (state, action) => produce(state, (draft) => {
+    draft.findEmail.loading = false;
+    draft.findEmail.data = action.payload.data;
+    draft.findEmail.error = null;
+  }))
+  .handleAction(findEmailAsync.failure, (state, action) => produce(state, (draft) => {
+    draft.findEmail.loading = false;
+    draft.findEmail.data = null;
+    draft.findEmail.error = action.payload;
   }));
 
 export default userReducer;
