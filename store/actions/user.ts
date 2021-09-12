@@ -3,7 +3,6 @@ import { AxiosError } from 'axios';
 
 import {
   EmailDuplicateCheckTypes,
-  VeifyNicknameTypes,
   MyInformationTypes,
 } from '../types/user';
 
@@ -17,17 +16,6 @@ export const emailDuplicateCheckAsync = createAsyncAction(
   EMAIL_DUPLICATE_CHECK_SUCCESS,
   EMAIL_DUPLICATE_CHECK_ERROR,
 )<string, EmailDuplicateCheckTypes, AxiosError>();
-
-export const RESET_VERIFY_NICKNAME = 'user/RESET_VERIFY_NICKNAME';
-export const VERIFY_NICKNAME = 'user/VERIFY_NICKNAME';
-export const VERIFY_NICKNAME_SUCCESS = 'user/VERIFY_NICKNAME_SUCCESS';
-export const VERIFY_NICKNAME_ERROR = 'user/VERIFY_NICKNAME_ERROR';
-export const resetVerifyNickname = createStandardAction(RESET_VERIFY_NICKNAME)();
-export const verifyNicknameAsync = createAsyncAction(
-  VERIFY_NICKNAME,
-  VERIFY_NICKNAME_SUCCESS,
-  VERIFY_NICKNAME_ERROR,
-)<string, VeifyNicknameTypes, AxiosError>();
 
 export const GET_MY_INFORMATION = 'user/GET_MY_INFORMATION';
 export const GET_MY_INFORMATION_SUCCESS = 'user/GET_MY_INFORMATION_SUCCESS';

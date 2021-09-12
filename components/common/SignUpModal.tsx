@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
-import { verifyNicknameAsync, resetVerifyNickname } from '../../store/actions/user';
-import { resetSignUp, signUpAsync } from '../../store/actions/auth';
+import { verifyNicknameAsync, resetVerifyNickname, resetSignUp, signUpAsync } from '../../store/actions/auth';
 import { RootState } from '../../store/reducers';
 import useEmailInput from '../../hooks/input/useEmailInput';
 import useCheckPasswordInput from '../../hooks/input/useCheckPasswordInput';
@@ -43,6 +42,7 @@ interface SignUpModalProps {
 
 function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModalProps) {
   const dispatch = useDispatch();
+  const { verifyNickname, signUp } = useSelector((state: RootState) => state.auth);
 
   const [email, onChangeEmail, emailVerifyMessage] = useEmailInput('');
   const [password, passwordVerifyMessage, checkPassword, checkPasswordVerifyMessage, onChangePassword] = useCheckPasswordInput('', '');
@@ -117,8 +117,6 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
     nickname, nicknameVerifyMessage,
   ]);
 
-  const { verifyNickname } = useSelector((state: RootState) => state.user);
-
   useEffect(() => {
     if (verifyNickname.data) {
       if (verifyNickname.data === 'no-nickname') {
@@ -149,8 +147,6 @@ function SignUpModal({ animation, onCloseModal, onChangeLoginModal }: SignUpModa
       dispatch(resetVerifyNickname());
     }
   }, [verifyNickname.error]);
-
-  const { signUp } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (signUp.data) {

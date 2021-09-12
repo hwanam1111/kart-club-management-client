@@ -2,10 +2,22 @@ import { createStandardAction, createAsyncAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
 
 import {
+  VeifyNicknameTypes,
   SignUpTypes,
   LoginTypes,
   LogoutTypes,
 } from '../types/auth';
+
+export const RESET_VERIFY_NICKNAME = 'auth/RESET_VERIFY_NICKNAME';
+export const VERIFY_NICKNAME = 'auth/VERIFY_NICKNAME';
+export const VERIFY_NICKNAME_SUCCESS = 'auth/VERIFY_NICKNAME_SUCCESS';
+export const VERIFY_NICKNAME_ERROR = 'auth/VERIFY_NICKNAME_ERROR';
+export const resetVerifyNickname = createStandardAction(RESET_VERIFY_NICKNAME)();
+export const verifyNicknameAsync = createAsyncAction(
+  VERIFY_NICKNAME,
+  VERIFY_NICKNAME_SUCCESS,
+  VERIFY_NICKNAME_ERROR,
+)<string, VeifyNicknameTypes, AxiosError>();
 
 export const RESET_SIGN_UP = 'auth/RESET_SIGN_UP';
 export const SIGN_UP = 'auth/SIGN_UP';

@@ -9,6 +9,14 @@ export interface DefaultAsyncTypes {
   error: any | null
 }
 
+export interface VeifyNicknameTypes extends DefaultAsyncTypes {
+  data: {
+    accessId: string,
+    name: string,
+    level: number
+  } | string | null
+}
+
 export interface SignUpTypes extends DefaultAsyncTypes {
   data: string | null
 }
@@ -22,6 +30,7 @@ export interface LogoutTypes extends DefaultAsyncTypes {
 }
 
 export interface InitialStateAuthDto {
+  verifyNickname: VeifyNicknameTypes,
   signUp: SignUpTypes,
   login: LoginTypes,
   logout: LogoutTypes,

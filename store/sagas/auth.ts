@@ -2,12 +2,19 @@ import { all, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 import createAsyncSaga from '../../lib/createAsyncSaga';
-import { SignUpTypes, LoginTypes, LogoutTypes } from '../types/auth';
+import { VeifyNicknameTypes, SignUpTypes, LoginTypes, LogoutTypes } from '../types/auth';
 import {
+  verifyNicknameAsync, VERIFY_NICKNAME,
   signUpAsync, SIGN_UP,
   loginAsync, LOGIN,
   logoutAsync, LOGOUT,
 } from '../actions/auth';
+
+async function verifyNicknameAPI(nickname: string) {
+  const response = await axios.get<VeifyNicknameTypes>(`/v1/auth/nickname/${nickname}`);
+  return response.data;
+}
+const verifyNickname = createAsyncSaga(verifyNicknameAsync, verifyNicknameAPI);
 
 async function signUpAPI(data: {
   email: string,
@@ -37,6 +44,7 @@ const logout = createAsyncSaga(logoutAsync, logoutAPI);
 
 export default function* userSaga() {
   yield all([
+    takeLatest(VERIFY_NICKNAME, verifyNickname),
     takeLatest(SIGN_UP, signUp),
     takeLatest(LOGIN, login),
     takeLatest(LOGOUT, logout),

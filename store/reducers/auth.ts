@@ -3,12 +3,18 @@ import { createReducer } from 'typesafe-actions';
 
 import { InitialStateAuthDto, AuthAction } from '../types/auth';
 import {
+  resetVerifyNickname, verifyNicknameAsync,
   resetSignUp, signUpAsync,
   resetLogin, loginAsync,
   resetLogout, logoutAsync,
 } from '../actions/auth';
 
 const initialState: InitialStateAuthDto = {
+  verifyNickname: {
+    loading: false,
+    data: null,
+    error: null,
+  },
   signUp: {
     loading: false,
     data: null,
@@ -27,6 +33,26 @@ const initialState: InitialStateAuthDto = {
 };
 
 const authReducer = createReducer<InitialStateAuthDto, AuthAction>(initialState)
+  .handleAction(resetVerifyNickname, (state) => produce(state, (draft) => {
+    draft.verifyNickname.loading = false;
+    draft.verifyNickname.data = null;
+    draft.verifyNickname.error = null;
+  }))
+  .handleAction(verifyNicknameAsync.request, (state) => produce(state, (draft) => {
+    draft.verifyNickname.loading = true;
+    draft.verifyNickname.data = null;
+    draft.verifyNickname.error = null;
+  }))
+  .handleAction(verifyNicknameAsync.success, (state, action) => produce(state, (draft) => {
+    draft.verifyNickname.loading = false;
+    draft.verifyNickname.data = action.payload.data;
+    draft.verifyNickname.error = null;
+  }))
+  .handleAction(verifyNicknameAsync.failure, (state, action) => produce(state, (draft) => {
+    draft.verifyNickname.loading = false;
+    draft.verifyNickname.data = null;
+    draft.verifyNickname.error = action.payload;
+  }))
   .handleAction(resetSignUp, (state) => produce(state, (draft) => {
     draft.signUp.loading = false;
     draft.signUp.data = null;
