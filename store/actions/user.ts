@@ -5,6 +5,7 @@ import {
   EmailDuplicateCheckTypes,
   MyInformationTypes,
   FindEmailTypes,
+  FindPasswordTypes,
 } from '../types/user';
 
 export const CHANGE_CURRENT_MODAL = 'user/CHANGE_CURRENT_MODAL';
@@ -40,3 +41,17 @@ export const findEmailAsync = createAsyncAction(
   FIND_EMAIL_SUCCESS,
   FIND_EMAIL_ERROR,
 )<string, FindEmailTypes, AxiosError>();
+
+export const RESET_FIND_PASSWORD = 'user/RESET_FIND_PASSWORD';
+export const FIND_PASSWORD = 'user/FIND_PASSWORD';
+export const FIND_PASSWORD_SUCCESS = 'user/FIND_PASSWORD_SUCCESS';
+export const FIND_PASSWORD_ERROR = 'user/FIND_PASSWORD_ERROR';
+export const resetFindPassword = createStandardAction(RESET_FIND_PASSWORD)();
+export const findPasswordAsync = createAsyncAction(
+  FIND_PASSWORD,
+  FIND_PASSWORD_SUCCESS,
+  FIND_PASSWORD_ERROR,
+)<{
+  email: string,
+  accessId: string
+}, FindPasswordTypes, AxiosError>();

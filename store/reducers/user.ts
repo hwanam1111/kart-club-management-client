@@ -7,6 +7,7 @@ import {
   resetEmailDuplicateCheck, emailDuplicateCheckAsync,
   getMyInformationAsync,
   resetFindEmail, findEmailAsync,
+  resetFindPassword, findPasswordAsync,
 } from '../actions/user';
 
 const initialState: InitialStateUserDto = {
@@ -22,6 +23,11 @@ const initialState: InitialStateUserDto = {
     error: null,
   },
   findEmail: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  findPassword: {
     loading: false,
     data: null,
     error: null,
@@ -86,6 +92,26 @@ const userReducer = createReducer<InitialStateUserDto, UserAction>(initialState)
     draft.findEmail.loading = false;
     draft.findEmail.data = null;
     draft.findEmail.error = action.payload;
+  }))
+  .handleAction(resetFindPassword, (state) => produce(state, (draft) => {
+    draft.findPassword.loading = false;
+    draft.findPassword.data = null;
+    draft.findPassword.error = null;
+  }))
+  .handleAction(findPasswordAsync.request, (state) => produce(state, (draft) => {
+    draft.findPassword.loading = true;
+    draft.findPassword.data = null;
+    draft.findPassword.error = null;
+  }))
+  .handleAction(findPasswordAsync.success, (state, action) => produce(state, (draft) => {
+    draft.findPassword.loading = false;
+    draft.findPassword.data = action.payload.data;
+    draft.findPassword.error = null;
+  }))
+  .handleAction(findPasswordAsync.failure, (state, action) => produce(state, (draft) => {
+    draft.findPassword.loading = false;
+    draft.findPassword.data = null;
+    draft.findPassword.error = action.payload;
   }));
 
 export default userReducer;

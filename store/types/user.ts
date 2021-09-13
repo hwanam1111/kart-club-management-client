@@ -30,9 +30,14 @@ export interface FindEmailTypes extends DefaultAsyncTypes {
   }
 }
 
+export interface FindPasswordTypes extends DefaultAsyncTypes {
+  data: string | null
+}
+
 export interface InitialStateUserDto {
   currentModal: string | null,
   emailDuplicateCheck: EmailDuplicateCheckTypes,
   myInformation: MyInformationTypes,
   findEmail: FindEmailTypes,
+  findPassword: FindPasswordTypes,
 }

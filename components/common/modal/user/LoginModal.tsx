@@ -35,10 +35,11 @@ interface LoginModalProps {
   },
   onCloseModal: () => void,
   onChangeSignUpModal: () => void,
-  onChangeFindEmailModal: () => void
+  onChangeFindEmailModal: () => void,
+  onChangeFindPasswordModal: () => void
 }
 
-function LoginModal({ modalAnimation, onCloseModal, onChangeSignUpModal, onChangeFindEmailModal }: LoginModalProps) {
+function LoginModal({ modalAnimation, onCloseModal, onChangeSignUpModal, onChangeFindEmailModal, onChangeFindPasswordModal }: LoginModalProps) {
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector((state: RootState) => state.auth.login);
 
@@ -124,6 +125,7 @@ function LoginModal({ modalAnimation, onCloseModal, onChangeSignUpModal, onChang
           />
           <LoginModalFindUserInfoButton
             onChangeFindEmailModal={onChangeFindEmailModal}
+            onChangeFindPasswordModal={onChangeFindPasswordModal}
           />
           <FormSubmitButton buttonText="로그인" margin="50px auto 0 auto" disabled={email === '' || password === ''} />
         </LoginForm>

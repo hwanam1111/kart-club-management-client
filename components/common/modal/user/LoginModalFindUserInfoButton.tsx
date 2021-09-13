@@ -20,17 +20,18 @@ const SeparateLine = styled.span`
 `;
 
 interface LoginModalFindUserInfoButtonProps {
-  onChangeFindEmailModal: () => void
+  onChangeFindEmailModal: () => void,
+  onChangeFindPasswordModal: () => void
 }
 
-function LoginModalFindUserInfoButton({ onChangeFindEmailModal }: LoginModalFindUserInfoButtonProps) {
+function LoginModalFindUserInfoButton({ onChangeFindEmailModal, onChangeFindPasswordModal }: LoginModalFindUserInfoButtonProps) {
   return (
     <LoginModalFindUserInfoButtonWrapper>
       <FindUserInfoButton type="button" onClick={onChangeFindEmailModal}>
         이메일 찾기
       </FindUserInfoButton>
       <SeparateLine>|</SeparateLine>
-      <FindUserInfoButton type="button">
+      <FindUserInfoButton type="button" onClick={onChangeFindPasswordModal}>
         비밀번호 찾기
       </FindUserInfoButton>
     </LoginModalFindUserInfoButtonWrapper>
