@@ -85,10 +85,17 @@ function FindPasswordModal({ modalAnimation, onCloseModal }: FindPasswordModalPr
 
   useEffect(() => {
     if (findPassword.error) {
-      Swal.fire({
-        icon: 'error',
-        text: '서버에러가 발생하였습니다.\n잠시후 다시 이용해주세요.',
-      });
+      if (findPassword.error.response.data.data) {
+        Swal.fire({
+          icon: 'error',
+          text: '입력하신 이메일과 닉네임에 일치하는 회원님의 정보가 없습니다.',
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          text: '서버에러가 발생하였습니다.\n잠시후 다시 이용해주세요.',
+        });
+      }
 
       dispatch(resetVerifyNickname());
       dispatch(resetFindPassword());
