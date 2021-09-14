@@ -5,6 +5,7 @@ import auth from './auth';
 import user from './user';
 
 interface StateType {
+  auth: any,
   user: any
 }
 
