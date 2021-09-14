@@ -17,9 +17,10 @@ export interface MyInformationTypes extends DefaultAsyncTypes {
   data: {
     id: number,
     email: string,
-    rating: string,
-    profileImageUri: string,
-    clubId?: number
+    currentNickname: string,
+    rating: string | null,
+    profileImageUri: string | null,
+    clubId: number | null,
   } | null | string
 }
 
