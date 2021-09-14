@@ -31,7 +31,6 @@ export const signUpAsync = createAsyncAction(
 )<{
   email: string,
   password: string,
-  nickname: string,
   accessId: string
 }, SignUpTypes, AxiosError>();
 

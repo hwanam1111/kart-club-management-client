@@ -127,7 +127,6 @@ function SignUpModal({ modalAnimation, onCloseModal, onChangeLoginModal }: SignU
         dispatch(signUpAsync.request({
           email,
           password,
-          nickname,
           accessId: verifyNickname.data.accessId,
         }));
       }

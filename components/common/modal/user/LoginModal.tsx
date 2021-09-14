@@ -72,6 +72,7 @@ function LoginModal({ modalAnimation, onCloseModal, onChangeSignUpModal, onChang
     if (data) {
       dispatch(resetLogin());
       dispatch(getMyInformationAsync.request());
+      onCloseModal();
     }
   }, [data]);
 
