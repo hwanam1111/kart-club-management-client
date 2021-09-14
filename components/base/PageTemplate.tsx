@@ -18,7 +18,7 @@ const Wrapper = styled.main`
   margin: 65px 30px 0 280px;
   padding: 30px;
   border-radius: 1.5rem;
-  min-height: calc(100vh - 65px - 140px);
+  min-height: calc(100vh - 65px - 60px);
   display: flex;
   flex-direction: column;
 `;
