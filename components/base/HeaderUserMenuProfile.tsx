@@ -37,7 +37,7 @@ const MyNickname = styled.span`
   }
 `;
 
-const MyEmail = styled.span`
+const MyClubName = styled.span`
   display: block;
   margin-top: 8px;
   font-size: 0.8rem;
@@ -62,10 +62,12 @@ function HeaderUserMenuProfile() {
         {myInformation && myInformation !== 'no-user-info' ? (
           <>
             <MyNickname>
-              KoguryoLJKIM
-              <span className="rating">운영진입니다</span>
+              {myInformation?.currentNickname || ''}
+              <span className="rating">
+                {myInformation?.rating || '소속 클럽 없음'}
+              </span>
             </MyNickname>
-            <MyEmail>KoguryoEmpire</MyEmail>
+            {myInformation?.clubId && <MyClubName>KoguryoEmpire</MyClubName>}
           </>
         ) : (
           <PleaseLogin>
