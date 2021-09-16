@@ -64,12 +64,12 @@ export interface HeaderNotificationParams {
 
 function HeaderNotification({ onClose, slideAnimation }: HeaderNotificationParams) {
   return (
-    <HeaderNotificationOverlay>
+    <HeaderNotificationOverlay role="slider">
       <NotificationWrapper {...slideAnimation}>
         <NotificationHeader>
           <HeaderTitle>최근 알람</HeaderTitle>
           <CloseBtn type="button" onClick={onClose}>
-            <AiOutlineClose />
+            <AiOutlineClose {...{ title: 'closeButton' }} />
           </CloseBtn>
         </NotificationHeader>
       </NotificationWrapper>
