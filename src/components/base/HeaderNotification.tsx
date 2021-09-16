@@ -52,7 +52,7 @@ const CloseBtn = styled.button`
   }
 `;
 
-interface HeaderNotificationParams {
+export interface HeaderNotificationParams {
   onClose: () => void,
   slideAnimation: {
     ref: any,
