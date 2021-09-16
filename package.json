@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@next/bundle-analyzer": "^10.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
     "@webcomponents/shadydom": "^1.8.0",
     "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.21.1",
