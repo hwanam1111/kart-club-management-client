@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 const useNavigationToggleMenu = (duration: number, opend: boolean, menuArrowRef: any) => {
-  const element = useRef<HTMLElement>(null);
+  const element = useRef<any>(null);
   const [menuOpend, setMenuOpend] = useState(opend);
 
   const menuOpendHandler = useCallback((): void => {
