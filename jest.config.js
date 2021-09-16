@@ -22,4 +22,7 @@ module.exports = {
     '<rootDir>/**/__tests__/*.(js|jsx|ts|tsx))',
     '**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)',
   ],
+  setupFilesAfterEnv: [
+    '<rootDir>/src/setupTests.ts',
+  ],
 };
