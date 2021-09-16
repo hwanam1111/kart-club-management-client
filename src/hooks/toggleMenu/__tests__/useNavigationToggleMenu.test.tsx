@@ -3,7 +3,7 @@ import { render, waitFor } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import useNavigationToggleMenu from '../useNavigationToggleMenu';
 
-describe('custom hooks : useNavigationToggleMenu called', () => {
+describe('custom hooks : useNavigationToggleMenu', () => {
   jest.spyOn(React, 'useRef').mockImplementation(() => ({
     current: {
       style: {

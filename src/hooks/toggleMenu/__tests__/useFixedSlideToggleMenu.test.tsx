@@ -3,7 +3,7 @@ import { render, waitFor } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import useFixedSlideToggleMenu from '../useFixedSlideToggleMenu';
 
-describe('custom hooks : useFixedSlideToggleMenu called', () => {
+describe('custom hooks : useFixedSlideToggleMenu', () => {
   it('fixed toggle slide menu called', async () => {
     const { result } = renderHook(() => useFixedSlideToggleMenu('left', 0.5, false));
     render(<div {...result.current[0]} />);
