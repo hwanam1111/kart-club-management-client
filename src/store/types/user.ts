@@ -9,6 +9,8 @@ export interface DefaultAsyncTypes {
   error: any | null
 }
 
+export type CurrentModalTypes = string | null;
+
 export interface EmailDuplicateCheckTypes extends DefaultAsyncTypes {
   data: string | null
 }
@@ -35,7 +37,7 @@ export interface FindPasswordTypes extends DefaultAsyncTypes {
 }
 
 export interface InitialStateUserDto {
-  currentModal: string | null,
+  currentModal: CurrentModalTypes,
   emailDuplicateCheck: EmailDuplicateCheckTypes,
   myInformation: MyInformationTypes,
   findEmail: FindEmailTypes,

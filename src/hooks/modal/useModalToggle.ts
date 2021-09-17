@@ -4,7 +4,7 @@ import { changeCurrentModal } from '../../store/actions/user';
 
 const useModalToggle = (duration: number, opend: boolean) => {
   const dispatch = useDispatch();
-  const element = useRef<HTMLElement>(null);
+  const element = useRef<any>(null);
 
   const [modalOpend, setModalOpend] = useState(opend);
 

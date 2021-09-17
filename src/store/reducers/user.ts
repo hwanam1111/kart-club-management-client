@@ -10,7 +10,7 @@ import {
   resetFindPassword, findPasswordAsync,
 } from '../actions/user';
 
-const initialState: InitialStateUserDto = {
+export const initialState: InitialStateUserDto = {
   currentModal: null,
   emailDuplicateCheck: {
     loading: false,

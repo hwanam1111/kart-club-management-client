@@ -14,10 +14,10 @@ function UserModal() {
   const [signUpModalAnimation, isSignUpModalOpend, setSignUpModalOpend, setSignUpModalClosed] = useModalToggle(0.4, false);
   const [findEmailModalAnimation, isFindEmailModalOpend, setFindEmailModalOpend, setFindEmailModalClosed] = useModalToggle(0.4, false);
   const [findPasswordModalAnimation, isFindPasswordModalOpend, setFindPasswordModalOpend, setFindPasswordModalClosed] = useModalToggle(0.4, false);
-  const onChangeLoginModal = useModalChange('login', setSignUpModalClosed, setLoginModalOpend, 0.6);
-  const onChangeSignUpModal = useModalChange('signUp', setLoginModalClosed, setSignUpModalOpend, 0.6);
-  const onChangeFindEmailModal = useModalChange('findEmail', setLoginModalClosed, setFindEmailModalOpend, 0.6);
-  const onChangeFindPasswordModal = useModalChange('findPassword', setLoginModalClosed, setFindPasswordModalOpend, 0.6);
+  const onChangeLoginModal = useModalChange('login', setSignUpModalClosed, 0.6);
+  const onChangeSignUpModal = useModalChange('signUp', setLoginModalClosed, 0.6);
+  const onChangeFindEmailModal = useModalChange('findEmail', setLoginModalClosed, 0.6);
+  const onChangeFindPasswordModal = useModalChange('findPassword', setLoginModalClosed, 0.6);
 
   const { currentModal } = useSelector((state: RootState) => state.user);
   useEffect(() => {
