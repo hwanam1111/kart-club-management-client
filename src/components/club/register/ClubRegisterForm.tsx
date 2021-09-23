@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import useCheckBlankInput from '../../../hooks/input/useCheckBlankInput';
 import useGetMyInformation from '../../../hooks/useGetMyInformation';
-import { clubRegisterAsync, resetClubRegister } from '../../../store/actions/club';
+import { clubRegisterAsync, resetClubMasterVerifyImageUpload, resetClubRegister } from '../../../store/actions/club';
 import { RootState } from '../../../store/reducers';
 import FormSubmitButton from '../../common/FormSubmitButton';
 import LabelInput from '../../common/LabelInput';
@@ -74,6 +74,7 @@ function ClubRegisterForm() {
         icon: 'success',
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(resetClubMasterVerifyImageUpload());
           Router.push('/');
         }
       });
