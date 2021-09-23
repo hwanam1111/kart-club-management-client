@@ -68,15 +68,16 @@ const CompleteIcon = styled.i`
 interface LabelInputProps {
   label: string,
   type: string,
-  inputLabel: string,
+  inputLabel?: string,
   placeholder: string,
   value: string,
-  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void,
+  onChange?: (evt: React.ChangeEvent<HTMLInputElement>) => void,
   verifyMessage: string,
   maxLength: number,
+  readOnly?: boolean
 }
 
-function LabelInput({ label, type, inputLabel, placeholder, value, onChange, verifyMessage, maxLength }: LabelInputProps) {
+function LabelInput({ label, type, inputLabel, placeholder, value, onChange, verifyMessage, maxLength, readOnly = false }: LabelInputProps) {
   const inputFocusRef = useRef<HTMLInputElement>();
 
   const onFocusInput = useCallback((): void => {
@@ -101,6 +102,7 @@ function LabelInput({ label, type, inputLabel, placeholder, value, onChange, ver
           onFocus={onFocusInput}
           onBlur={onBlurInput}
           autoComplete="on"
+          readOnly={readOnly}
         />
         {verifyMessage === 'complete' && <CompleteIcon><AiOutlineCheck /></CompleteIcon>}
       </InputBox>

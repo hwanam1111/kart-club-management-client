@@ -49,6 +49,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "no-param-reassign": "off",
     "no-useless-escape": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "react/require-default-props": "off"
   }
 }
