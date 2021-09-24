@@ -12,6 +12,7 @@ import FormSubmitButton from '../../common/FormSubmitButton';
 import LabelInput from '../../common/LabelInput';
 import ClubRegisterFormVerifyMaster from './ClubRegisterFormVerifyMaster';
 import Loading from '../../common/Loading';
+import { getMyInformationAsync } from '../../../store/actions/user';
 
 const ClubRegisterWrapper = styled.section`
   background-color: #fff;
@@ -68,6 +69,7 @@ function ClubRegisterForm() {
   useEffect(() => {
     if (data) {
       dispatch(resetClubRegister());
+      dispatch(getMyInformationAsync.request());
 
       Swal.fire({
         html: '클럽 등록 신청이 완료되었습니다.<br/><br/>클럽 검증이 완료되는대로 승인이 완료될 예정입니다.',
