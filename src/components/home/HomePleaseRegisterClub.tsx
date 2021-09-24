@@ -29,7 +29,6 @@ const PleaseRegisterClubButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
 `;
 
 const Button = styled.button`

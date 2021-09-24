@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PageTemplete from '../components/base/PageTemplate';
+import HomeApplyingClub from '../components/home/HomeApplyingClub';
 import HomePleaseLogin from '../components/home/HomePleaseLogin';
 import HomePleaseRegisterClub from '../components/home/HomePleaseRegisterClub';
 import HomeTopButton from '../components/home/HomeTopButton';
@@ -22,7 +23,7 @@ function MainPage() {
           ) : (
             <>
               {myInformation.club.isVerifiedComplete === 0 ? (
-                <div>승인x</div>
+                <HomeApplyingClub />
               ) : (
                 <div>승인o</div>
               )}
