@@ -67,7 +67,7 @@ function HeaderUserMenuProfile() {
                 {myInformation?.rating || '소속 클럽 없음'}
               </span>
             </MyNickname>
-            {myInformation?.clubId && <MyClubName>KoguryoEmpire</MyClubName>}
+            {myInformation?.club?.id && <MyClubName>{myInformation.club.clubName}</MyClubName>}
           </>
         ) : (
           <PleaseLogin>

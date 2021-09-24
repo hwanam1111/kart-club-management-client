@@ -17,10 +17,16 @@ function MainPage() {
     >
       {myInformation && myInformation !== 'no-user-info' ? (
         <>
-          {!myInformation.clubId ? (
+          {!myInformation?.club?.id ? (
             <HomePleaseRegisterClub />
           ) : (
-            <div>클럽에 가입되었음</div>
+            <>
+              {myInformation.club.isVerifiedComplete === 0 ? (
+                <div>승인x</div>
+              ) : (
+                <div>승인o</div>
+              )}
+            </>
           )}
         </>
       ) : (

@@ -54,7 +54,7 @@ function NavigationMenu() {
                 menuLink={null}
               />
               <SeparateLine />
-              {myInformation.clubId ? (
+              {(myInformation?.club?.id && myInformation?.club?.isVerifiedComplete === 1) ? (
                 <>
                   <NavigationMenuMain
                     title="클럽 홈"
